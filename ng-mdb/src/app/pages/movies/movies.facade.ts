@@ -8,7 +8,7 @@ import { GetNowPlayingMovies, GetTrendingMovies } from "@store/movies/movies.act
 import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from "@store/movies/movies.state";
 
 @Injectable()
-export class HomeFacade {
+export class MoviesFacade {
     @Select((state: IAppState) => state.movies.trendingMovies) private trendingMovies$!: Observable<TrendingMoviesStateModel>;
     @Select((state: IAppState) => state.movies.nowPlayingMovies) private nowPlayingMovies$!: Observable<NowPlayingMoviesStateModel>;
 

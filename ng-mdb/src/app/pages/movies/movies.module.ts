@@ -2,20 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '@shared/shared.module';
-import { HomeRoutingModule } from '@pages/home/home-routing.module';
-import { HomeFacade } from '@pages/home/home.facade';
+import { MoviesRoutingModule } from '@pages/movies/movies-routing.module';
+import { MoviesFacade } from '@pages/movies/movies.facade';
 
 @NgModule({
   declarations: [
-    ...HomeRoutingModule.components
+    ...MoviesRoutingModule.components
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    MoviesRoutingModule,
     SharedModule
   ],
   providers: [
-    HomeFacade
+    MoviesFacade
   ]
 })
-export class HomeModule { }
+export class MoviesModule { }

@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: '',
     data: { preload: true },
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./pages/movies/movies.module').then(m => m.MoviesModule)
   },
   {
     path: 'settings',

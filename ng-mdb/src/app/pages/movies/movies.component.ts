@@ -2,24 +2,22 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { TTime } from '@core/models/types/TTime';
-import { HomeFacade } from '@pages/home/home.facade';
+import { MoviesFacade } from '@pages/movies/movies.facade';
 import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from '@store/movies/movies.state';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './movies.component.html',
 })
-export class HomeComponent {
+export class MoviesComponent {
   trendingMoviesTime = 'day';
   trendingMovies$: Observable<TrendingMoviesStateModel>;
   nowPlayingMovies$: Observable<NowPlayingMoviesStateModel>;
 
-  constructor(private homeFacade: HomeFacade) {
-    this.homeFacade.loadHomePage();
+  constructor(private moviesFacade: MoviesFacade) {
+    this.moviesFacade.loadHomePage();
 
-    this.trendingMovies$ = this.homeFacade.getTrendingMovies$();
-    this.nowPlayingMovies$ = this.homeFacade.getNowPlayingMovies$();
+    this.trendingMovies$ = this.moviesFacade.getTrendingMovies$();
+    this.nowPlayingMovies$ = this.moviesFacade.getNowPlayingMovies$();
   }
 
   getTrendingMovies(time: TTime) {
@@ -28,6 +26,6 @@ export class HomeComponent {
     }
 
     this.trendingMoviesTime = time;
-    this.homeFacade.loadTrendingMovies(time);
+    this.moviesFacade.loadTrendingMovies(time);
   }
 }
