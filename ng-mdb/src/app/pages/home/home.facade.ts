@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Select, Store } from "@ngxs/store";
-import { concat, Observable, timeout } from "rxjs";
+import { concat, Observable } from "rxjs";
+import { TTime } from "src/app/core/models/types/TTime";
 import { IAppState } from "../../core/store/IAppState";
 import { GetNowPlayingMovies, GetTrendingMovies } from "../../core/store/movies/movies.action";
 import { TrendingMoviesStateModel, NowPlayingMoviesStateModel } from "../../core/store/movies/movies.state";
@@ -25,5 +26,9 @@ export class HomeFacade {
     loadHomePage(): void {
         // Load the data in this exact order
         concat(this.store.dispatch(new GetTrendingMovies()), this.store.dispatch(new GetNowPlayingMovies()))
+    }
+
+    loadTrendingMovies(time: TTime) {
+        this.store.dispatch(new GetTrendingMovies(time))
     }
 }

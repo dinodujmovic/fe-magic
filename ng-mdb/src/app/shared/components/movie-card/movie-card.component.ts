@@ -20,7 +20,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
             </div>
         </div>
 
-        <div class="p-1 font-bold mt-5 h-full">{{ title }}</div>
+        <div class="p-1 font-bold mt-5">{{ title }}</div>
         <div class="p-1 text-gray-500">{{ date | date:'dd MMMM yyyy' }}</div>
     </div>
   `

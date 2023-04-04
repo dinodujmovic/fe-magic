@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { IErrorResponse, IApiResponse, IMovieResponse, IMoveDetailsResponse } from '../models';
-
-// const wrapAPI = (url: string) => `${environment.moviesAPI}/${url}`
+import { TTime } from '../models/types/TTime';
 
 const wrapAPI = (url: string, params?: any) => {
     const newUrl = new URL(`${environment.moviesAPI}/${url}`);
@@ -15,8 +14,6 @@ const wrapAPI = (url: string, params?: any) => {
 
     return newUrl.toString()
 }
-
-type TTime = 'day' | 'week'
 
 @Injectable({
     providedIn: 'root'

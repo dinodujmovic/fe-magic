@@ -9,11 +9,9 @@ import { HeaderComponent } from './layout/header/header.component';
 import { ToasterModule } from './modules/toaster/toaster.module';
 import { ModalModule } from './modules/modal/modal.module';
 import { FooterComponent } from './layout/footer/footer.component';
-import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin'
 import { environment } from '../../environments/environment';
 import { MovieState } from './store/movies/movies.state';
 import { SettingsState } from './store/settings/settings.state';
-import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { LOCAL_STORAGE_ENGINE, NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { MovieInterceptor } from './interceptors/movie.interceptor';
 
@@ -57,4 +55,4 @@ export class CoreModule extends EnsureModuleLoadedOnceGuard {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     super(parentModule);
   }
-} { }
+}{ }

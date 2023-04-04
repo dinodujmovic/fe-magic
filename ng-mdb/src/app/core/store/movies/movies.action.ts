@@ -1,6 +1,8 @@
+import { TTime } from "../../models/types/TTime";
+
 export class GetTrendingMovies {
     static type = '[Movies] Get trending movies';
-    constructor() { }
+    constructor(public time?: TTime) { }
 }
 
 export class GetNowPlayingMovies {

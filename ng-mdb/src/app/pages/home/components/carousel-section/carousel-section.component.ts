@@ -7,12 +7,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   <div class="container">
       <h1 class="text-xl font-bold mb-2">{{ title }}</h1>
 
-      <ng-content select="[data-carousel-section-loading]"></ng-content>
-
-      <ng-content select="[data-carousel-section-error]"></ng-content>
+      <ng-content select="[data-carousel-section-content-other]"></ng-content>
 
       <div class="carousel carousel-end rounded-box relative">
-          <ng-content select="[data-carousel-section-items]"></ng-content>
+          <ng-content select="[data-carousel-section-content-items]">
+          </ng-content>
       </div>
   </div>
   `

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   selector: 'mdb-loading',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-      <ng-container *ngIf="loading">Loading...</ng-container>
+      <div *ngIf="loading">Loading...</div>
   `,
 })
 export class LoadingComponent {

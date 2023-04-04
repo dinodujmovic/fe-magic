@@ -57,7 +57,7 @@ export class MovieState {
     constructor(private movieService: MovieService) { }
 
     @Action(GetTrendingMovies)
-    getTrendingMovies(ctx: StateContext<MoviesStateModel>) {
+    getTrendingMovies(ctx: StateContext<MoviesStateModel>, action: GetTrendingMovies) {
         const state = ctx.getState();
 
         ctx.patchState({
@@ -68,7 +68,7 @@ export class MovieState {
             },
         });
 
-        return this.movieService.getTrendingMovies().pipe(
+        return this.movieService.getTrendingMovies(action.time).pipe(
             tap((response: IApiResponse<IMovieResponse[]>) => {
                 if ('results' in response) {
                     ctx.patchState({
