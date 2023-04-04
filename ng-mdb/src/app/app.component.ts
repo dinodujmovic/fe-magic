@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { DataService } from './core/services/data.service';
-import { MovieService } from './core/services/movie.service';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs/internal/Observable';
+import { IAppState } from './core/store/IAppState';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,11 @@ import { MovieService } from './core/services/movie.service';
 export class AppComponent {
   title = 'ng-mdb';
 
-  constructor(private movieService: MovieService) {
-    this.movieService.getTopRatedMovies().subscribe((movies) => {
-      console.log(movies);
+  @Select((state: IAppState) => state.settings.theme) private theme$!: Observable<string>;
+
+  constructor() {
+    this.theme$.subscribe((theme) => {
+      document.documentElement.setAttribute('data-theme', theme)
     })
   }
 }

@@ -13,6 +13,11 @@ const routes: Routes = [
     data: { preload: true },
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
+  {
+    path: 'settings',
+    data: { preload: false },
+    loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsModule)
+  },
 ];
 
 

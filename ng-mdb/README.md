@@ -7,15 +7,6 @@ Project description.
 
 Get your API key from [MovieDb Settings](https://www.themoviedb.org/settings/api).
 
-Create secret folder with keys.ts file in your project directory.
-
-```
-// secret/keys.ts
-export const SECRET = {
-    API_KEY: '12345' // Your www.themoviedb.org API key
-}
-```
-
 ----------------
 ## Angular CLI
 
