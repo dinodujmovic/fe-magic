@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs/internal/Observable';
-import { IAppState } from './core/store/IAppState';
+import { IAppState } from '@core/store/IAppState';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <mdb-header></mdb-header>
+
+    <router-outlet></router-outlet>
+    
+    <mdb-footer class="mt-auto"></mdb-footer>
+    <mdb-toaster></mdb-toaster>
+    <mdb-modal></mdb-modal>
+`,
 })
 export class AppComponent {
   title = 'ng-mdb';

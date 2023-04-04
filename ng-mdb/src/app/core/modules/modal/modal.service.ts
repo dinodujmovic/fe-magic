@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ModalComponent } from './modal.component';
 
 export interface IModalContent {
   header?: string;

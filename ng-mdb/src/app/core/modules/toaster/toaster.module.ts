@@ -1,9 +1,8 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ToasterComponent } from './toaster.component';
-import { ToasterService } from './toaster.service';
-import { EnsureModuleLoadedOnceGuard } from '../../guards/ensure-module-loaded-once.guard';
+import { ToasterComponent } from '@core/modules/toaster/toaster.component';
+import { ToasterService } from '@core/modules/toaster/toaster.service';
+import { EnsureModuleLoadedOnceGuard } from '@core/guards/ensure-module-loaded-once.guard';
 
 @NgModule({
   imports: [CommonModule],

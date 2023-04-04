@@ -1,9 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IApiResponse, IErrorResponse, IMoveDetailsResponse, IMovieResponse } from '@core/models';
+import { TTime } from '@core/models/types/TTime';
+import { environment } from '@environment/environment';
 import { catchError, map, Observable, of } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { IErrorResponse, IApiResponse, IMovieResponse, IMoveDetailsResponse } from '../models';
-import { TTime } from '../models/types/TTime';
+
 
 const wrapAPI = (url: string, params?: any) => {
     const newUrl = new URL(`${environment.moviesAPI}/${url}`);

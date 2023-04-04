@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { GrowlerMessageType, ToasterService } from '@core/modules/toaster/toaster.service';
+import { LoggerService } from '@core/services/logger.service';
 
-import { ToasterService, GrowlerMessageType } from './toaster.service';
-import { LoggerService } from '../../services/logger.service';
 
 @Component({
   selector: 'mdb-toaster',

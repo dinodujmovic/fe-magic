@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeFacade } from './home.facade';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
+import { HomeRoutingModule } from '@pages/home/home-routing.module';
+import { HomeFacade } from '@pages/home/home.facade';
 
 @NgModule({
   declarations: [

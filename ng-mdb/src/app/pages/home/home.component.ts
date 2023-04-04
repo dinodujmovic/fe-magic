@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TTime } from 'src/app/core/models/types/TTime';
-import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from 'src/app/core/store/movies/movies.state';
-import { HomeFacade } from './home.facade';
+
+import { TTime } from '@core/models/types/TTime';
+import { HomeFacade } from '@pages/home/home.facade';
+import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from '@store/movies/movies.state';
 
 @Component({
   selector: 'app-home',

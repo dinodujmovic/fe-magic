@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Select, Store } from "@ngxs/store";
 import { concat, Observable } from "rxjs";
-import { TTime } from "src/app/core/models/types/TTime";
-import { IAppState } from "../../core/store/IAppState";
-import { GetNowPlayingMovies, GetTrendingMovies } from "../../core/store/movies/movies.action";
-import { TrendingMoviesStateModel, NowPlayingMoviesStateModel } from "../../core/store/movies/movies.state";
+
+import { TTime } from "@core/models/types/TTime";
+import { Select, Store } from "@ngxs/store";
+import { IAppState } from "@store/IAppState";
+import { GetNowPlayingMovies, GetTrendingMovies } from "@store/movies/movies.action";
+import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from "@store/movies/movies.state";
 
 @Injectable()
 export class HomeFacade {
@@ -17,7 +18,6 @@ export class HomeFacade {
     getTrendingMovies$(): Observable<TrendingMoviesStateModel> {
         return this.trendingMovies$;
     }
-
 
     getNowPlayingMovies$(): Observable<NowPlayingMoviesStateModel> {
         return this.nowPlayingMovies$;

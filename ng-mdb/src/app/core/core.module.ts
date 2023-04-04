@@ -3,17 +3,18 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { RouterModule } from '@angular/router';
-import { PreloadModulesStrategy } from './strategies/preload-modules.strategy';
-import { EnsureModuleLoadedOnceGuard } from './guards/ensure-module-loaded-once.guard';
-import { HeaderComponent } from './layout/header/header.component';
-import { ToasterModule } from './modules/toaster/toaster.module';
-import { ModalModule } from './modules/modal/modal.module';
-import { FooterComponent } from './layout/footer/footer.component';
-import { environment } from '../../environments/environment';
-import { MovieState } from './store/movies/movies.state';
-import { SettingsState } from './store/settings/settings.state';
+
 import { LOCAL_STORAGE_ENGINE, NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-import { MovieInterceptor } from './interceptors/movie.interceptor';
+import { HeaderComponent } from '@core/layout/header/header.component';
+import { FooterComponent } from '@core/layout/footer/footer.component';
+import { PreloadModulesStrategy } from '@core/strategies/preload-modules.strategy';
+import { MovieInterceptor } from '@core/interceptors/movie.interceptor';
+import { EnsureModuleLoadedOnceGuard } from '@core/guards/ensure-module-loaded-once.guard';
+import { ModalModule } from '@core/modules/modal/modal.module';
+import { ToasterModule } from '@core/modules/toaster/toaster.module';
+import { MovieState } from '@store/movies/movies.state';
+import { SettingsState } from '@store/settings/settings.state';
+import { environment } from '@environment/environment';
 
 @NgModule({
   declarations: [

@@ -1,9 +1,10 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { environment } from "@environment/environment";
 import { Store } from "@ngxs/store";
+import { IAppState } from "@store/IAppState";
 import { Observable } from "rxjs";
-import { environment } from "../../../environments/environment";
-import { IAppState } from "../store/IAppState";
+
 
 @Injectable()
 export class MovieInterceptor implements HttpInterceptor {

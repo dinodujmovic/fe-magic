@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'mdb-carousel-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="carousel-item flex-col w-48 p-1 relative">
       <ng-content></ng-content>

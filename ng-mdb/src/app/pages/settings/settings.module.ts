@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { SettingsRoutingModule } from './settings-routing.module';
-import { SettingsComponent } from './settings.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SettingsFacade } from './settings.facade';
+import { SettingsComponent } from '@pages/settings/settings.component';
+import { SettingsRoutingModule } from '@pages/settings/settings-routing.module';
+import { SettingsFacade } from '@pages/settings/settings.facade';
 
 
 @NgModule({

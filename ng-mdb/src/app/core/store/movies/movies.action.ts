@@ -1,4 +1,4 @@
-import { TTime } from "../../models/types/TTime";
+import { TTime } from "@core/models/types/TTime";
 
 export class GetTrendingMovies {
     static type = '[Movies] Get trending movies';

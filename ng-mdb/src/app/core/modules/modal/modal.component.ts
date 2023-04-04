@@ -1,6 +1,5 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
-
-import { ModalService, IModalContent } from './modal.service';
+import { Component, OnInit } from '@angular/core';
+import { IModalContent, ModalService } from '@core/modules/modal/modal.service';
 
 @Component({
   selector: 'mdb-modal',

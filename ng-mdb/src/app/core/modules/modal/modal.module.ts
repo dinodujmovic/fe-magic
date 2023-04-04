@@ -1,9 +1,8 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ModalComponent } from './modal.component';
-import { ModalService } from './modal.service';
-import { EnsureModuleLoadedOnceGuard } from '../../guards/ensure-module-loaded-once.guard';
+import { ModalComponent } from '@core/modules/modal/modal.component';
+import { ModalService } from '@core/modules/modal/modal.service';
+import { EnsureModuleLoadedOnceGuard } from '@core/guards/ensure-module-loaded-once.guard';
 
 @NgModule({
   imports: [CommonModule],
