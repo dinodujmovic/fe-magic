@@ -17,43 +17,43 @@ import { SettingsState } from '@store/settings/settings.state';
 import { environment } from '@environment/environment';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent
-  ],
-  imports: [
-    HttpClientModule,
-    CommonModule,
-    RouterModule,
-    ToasterModule,
-    ModalModule,
-    NgxsModule.forRoot([MovieState, SettingsState], {
-      developmentMode: !environment.production
-    }),
-    NgxsStoragePluginModule.forRoot({
-      key: [
-        {
-          key: SettingsState,
-          engine: LOCAL_STORAGE_ENGINE
-        },
-      ]
-    }),
-    ...environment.plugins
-  ],
-  exports: [
-    HeaderComponent,
-    FooterComponent,
-    ModalModule,
-    ToasterModule
-  ],
-  providers: [
-    PreloadModulesStrategy,
-    { provide: HTTP_INTERCEPTORS, useClass: MovieInterceptor, multi: true }
-  ],
+    declarations: [
+        HeaderComponent,
+        FooterComponent
+    ],
+    imports: [
+        HttpClientModule,
+        CommonModule,
+        RouterModule,
+        ToasterModule,
+        ModalModule,
+        NgxsModule.forRoot([MovieState, SettingsState], {
+            developmentMode: !environment.production
+        }),
+        NgxsStoragePluginModule.forRoot({
+            key: [
+                {
+                    key: SettingsState,
+                    engine: LOCAL_STORAGE_ENGINE
+                },
+            ]
+        }),
+        ...environment.plugins
+    ],
+    exports: [
+        HeaderComponent,
+        FooterComponent,
+        ModalModule,
+        ToasterModule
+    ],
+    providers: [
+        PreloadModulesStrategy,
+        { provide: HTTP_INTERCEPTORS, useClass: MovieInterceptor, multi: true }
+    ],
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {
-  // Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
-    super(parentModule);
-  }
-}{ }
+    // Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
+    constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+        super(parentModule);
+    }
+}

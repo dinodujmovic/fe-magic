@@ -3,21 +3,21 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CarouselSectionComponent } from './carousel-section.component';
 
 describe('CarouselSectionComponent', () => {
-  let component: CarouselSectionComponent;
-  let fixture: ComponentFixture<CarouselSectionComponent>;
+    let component: CarouselSectionComponent;
+    let fixture: ComponentFixture<CarouselSectionComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CarouselSectionComponent ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [ CarouselSectionComponent ]
+        })
+            .compileComponents();
 
-    fixture = TestBed.createComponent(CarouselSectionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(CarouselSectionComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

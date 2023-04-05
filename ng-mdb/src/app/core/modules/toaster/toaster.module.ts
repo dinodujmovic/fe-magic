@@ -5,15 +5,15 @@ import { ToasterService } from '@core/modules/toaster/toaster.service';
 import { EnsureModuleLoadedOnceGuard } from '@core/guards/ensure-module-loaded-once.guard';
 
 @NgModule({
-  imports: [CommonModule],
-  exports: [ToasterComponent],
-  providers: [ToasterService],
-  declarations: [ToasterComponent]
+    imports: [CommonModule],
+    exports: [ToasterComponent],
+    providers: [ToasterService],
+    declarations: [ToasterComponent]
 })
-export class ToasterModule extends EnsureModuleLoadedOnceGuard {    // Ensure that GrowlerModule is only loaded into AppModule
+export class ToasterModule extends EnsureModuleLoadedOnceGuard { // Ensure that GrowlerModule is only loaded into AppModule
 
-  // Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
-  constructor(@Optional() @SkipSelf() parentModule: ToasterModule) {
-    super(parentModule);
-  }
+    // Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
+    constructor(@Optional() @SkipSelf() parentModule: ToasterModule) {
+        super(parentModule);
+    }
 }

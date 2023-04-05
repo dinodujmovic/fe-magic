@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'mdb-carousel-section',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
+    selector: 'mdb-carousel-section',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: `
   <div class="container mb-10">
       <h1 class="text-xl font-bold mb-2">{{ title }}</h1>
 

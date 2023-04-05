@@ -7,16 +7,16 @@ import { SettingsFacade } from '@pages/settings/settings.facade';
 
 
 @NgModule({
-  declarations: [
-    SettingsComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SettingsRoutingModule
-  ],
-  providers: [
-    SettingsFacade
-  ]
+    declarations: [
+        SettingsComponent
+    ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        SettingsRoutingModule
+    ],
+    providers: [
+        SettingsFacade
+    ]
 })
 export class SettingsModule { }

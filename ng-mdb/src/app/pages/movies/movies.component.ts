@@ -6,26 +6,26 @@ import { MoviesFacade } from '@pages/movies/movies.facade';
 import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from '@store/movies/movies.state';
 
 @Component({
-  templateUrl: './movies.component.html',
+    templateUrl: './movies.component.html',
 })
 export class MoviesComponent {
-  trendingMoviesTime = 'day';
-  trendingMovies$: Observable<TrendingMoviesStateModel>;
-  nowPlayingMovies$: Observable<NowPlayingMoviesStateModel>;
+    trendingMoviesTime = 'day';
+    trendingMovies$: Observable<TrendingMoviesStateModel>;
+    nowPlayingMovies$: Observable<NowPlayingMoviesStateModel>;
 
-  constructor(private moviesFacade: MoviesFacade) {
-    this.moviesFacade.loadHomePage();
+    constructor(private moviesFacade: MoviesFacade) {
+        this.moviesFacade.loadHomePage();
 
-    this.trendingMovies$ = this.moviesFacade.getTrendingMovies$();
-    this.nowPlayingMovies$ = this.moviesFacade.getNowPlayingMovies$();
-  }
-
-  getTrendingMovies(time: TTime) {
-    if (this.trendingMoviesTime === time) {
-      return;
+        this.trendingMovies$ = this.moviesFacade.getTrendingMovies$();
+        this.nowPlayingMovies$ = this.moviesFacade.getNowPlayingMovies$();
     }
 
-    this.trendingMoviesTime = time;
-    this.moviesFacade.loadTrendingMovies(time);
-  }
+    getTrendingMovies(time: TTime) {
+        if (this.trendingMoviesTime === time) {
+            return;
+        }
+
+        this.trendingMoviesTime = time;
+        this.moviesFacade.loadTrendingMovies(time);
+    }
 }

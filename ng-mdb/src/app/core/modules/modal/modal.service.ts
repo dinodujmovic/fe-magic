@@ -10,10 +10,7 @@ export interface IModalContent {
 
 @Injectable()
 export class ModalService {
-
-    constructor() { }
-
     show: (modalContent: IModalContent) => Promise<boolean> = () => { return {} as Promise<boolean>; };
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     hide: () => void = () => {};
-
 }

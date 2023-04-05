@@ -6,16 +6,16 @@ import { MoviesRoutingModule } from '@pages/movies/movies-routing.module';
 import { MoviesFacade } from '@pages/movies/movies.facade';
 
 @NgModule({
-  declarations: [
-    ...MoviesRoutingModule.components
-  ],
-  imports: [
-    CommonModule,
-    MoviesRoutingModule,
-    SharedModule
-  ],
-  providers: [
-    MoviesFacade
-  ]
+    declarations: [
+        ...MoviesRoutingModule.components
+    ],
+    imports: [
+        CommonModule,
+        MoviesRoutingModule,
+        SharedModule
+    ],
+    providers: [
+        MoviesFacade
+    ]
 })
 export class MoviesModule { }

@@ -4,8 +4,8 @@ import { Observable } from "rxjs";
 import { IAppState } from '@core/store/IAppState';
 
 @Component({
-  selector: 'app-root',
-  template: `
+    selector: 'mdb-root',
+    template: `
     <mdb-header></mdb-header>
 
     <router-outlet></router-outlet>
@@ -16,13 +16,13 @@ import { IAppState } from '@core/store/IAppState';
 `,
 })
 export class AppComponent {
-  title = 'ng-mdb';
+    title = 'ng-mdb';
 
   @Select((state: IAppState) => state.settings.theme) private theme$!: Observable<string>;
 
   constructor() {
-    this.theme$.subscribe((theme) => {
-      document.documentElement.setAttribute('data-theme', theme)
-    })
+      this.theme$.subscribe((theme) => {
+          document.documentElement.setAttribute('data-theme', theme)
+      })
   }
 }

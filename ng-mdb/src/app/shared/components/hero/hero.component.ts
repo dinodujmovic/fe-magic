@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'mdb-hero',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
+    selector: 'mdb-hero',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: `
   <div class="hero mb-10" style="background-image: url({{background}});">
     <div class="hero-overlay bg-opacity-60"></div>
     <div class="hero-content text-center text-neutral-content h-96">

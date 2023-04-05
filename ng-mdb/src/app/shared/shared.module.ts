@@ -7,14 +7,14 @@ import { HeroComponent } from '@shared/components/hero/hero.component';
 const components = [HeroComponent, LoadingComponent, ErrorAlertComponent]
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    ...components
-  ],
-  exports: [
-    ...components
-  ]
+    imports: [
+        CommonModule
+    ],
+    declarations: [
+        ...components
+    ],
+    exports: [
+        ...components
+    ]
 })
 export class SharedModule { }

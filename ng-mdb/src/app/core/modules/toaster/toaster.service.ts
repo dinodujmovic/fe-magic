@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ToasterService {
-
-  constructor() { }
-
-  growl: (message: string, growlType: GrowlerMessageType) => number = () => 0;
-
+    growl: (message: string, growlType: GrowlerMessageType) => number = () => 0;
 }
 
 export enum GrowlerMessageType {

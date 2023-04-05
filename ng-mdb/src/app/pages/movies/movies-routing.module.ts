@@ -7,16 +7,16 @@ import { MovieCardComponent } from '@pages/movies/components/movie-card/movie-ca
 import { MoviesComponent } from '@pages/movies/movies.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MoviesComponent,
-  }
+    {
+        path: '',
+        component: MoviesComponent,
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
 export class MoviesRoutingModule {
-  static components = [MoviesComponent, MovieCardComponent, CarouselSectionComponent, CarouselItemComponent];
+    static components = [MoviesComponent, MovieCardComponent, CarouselSectionComponent, CarouselItemComponent];
 }

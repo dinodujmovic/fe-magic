@@ -31,10 +31,6 @@ import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class PreloadModulesStrategy implements PreloadingStrategy {
-
-    constructor() {
-    }
-
     preload(route: Route, load: () => Observable<any>): Observable<any> {
         if (route.data && route.data['preload']) {
             console.log('Preloaded: ' + route.path);

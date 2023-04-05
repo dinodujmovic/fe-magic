@@ -7,7 +7,5 @@ export class GetTrendingMovies {
 
 export class GetNowPlayingMovies {
     static type = '[Movies] Get now playing movies';
-
-    constructor() { }
 }
 

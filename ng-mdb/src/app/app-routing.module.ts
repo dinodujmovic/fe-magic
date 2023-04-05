@@ -3,26 +3,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { PreloadModulesStrategy } from '@core/strategies/preload-modules.strategy';
 
 const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/'
-  },
-  {
-    path: '',
-    data: { preload: true },
-    loadChildren: () => import('./pages/movies/movies.module').then(m => m.MoviesModule)
-  },
-  {
-    path: 'settings',
-    data: { preload: false },
-    loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsModule)
-  },
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/'
+    },
+    {
+        path: '',
+        data: { preload: true },
+        loadChildren: () => import('./pages/movies/movies.module').then(m => m.MoviesModule)
+    },
+    {
+        path: 'settings',
+        data: { preload: false },
+        loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsModule)
+    },
 ];
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadModulesStrategy })],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadModulesStrategy })],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

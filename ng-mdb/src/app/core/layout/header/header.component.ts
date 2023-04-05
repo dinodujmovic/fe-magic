@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'mdb-header',
-  template: `
+    selector: 'mdb-header',
+    template: `
         <div class="container mx-auto navbar bg-base-100">
         <div class="flex-1">
             <a class="btn btn-ghost normal-case text-xl" [routerLink]="'/'">TMDB</a>

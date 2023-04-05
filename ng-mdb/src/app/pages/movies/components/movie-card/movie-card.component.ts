@@ -5,9 +5,9 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   Shared across multiple modules like HomeModule, MovieModule.
 */
 @Component({
-  selector: 'mdb-movie-card',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
+    selector: 'mdb-movie-card',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: `
       <div class="mdb-movie-card">
         <div class="relative">
             <img class="rounded-md" [src]="poster">
@@ -29,5 +29,5 @@ export class MovieCardComponent {
   @Input() title!: string;
   @Input() poster!: string;
   @Input() rating!: number;
-  @Input() date: string = '';
+  @Input() date = '';
 }
