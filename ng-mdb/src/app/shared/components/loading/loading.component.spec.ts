@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { LoadingComponent } from './loading.component';
+import { LoadingComponent } from "./loading.component";
 
-describe('LoadingComponent', () => {
+describe("LoadingComponent", () => {
     let component: LoadingComponent;
     let fixture: ComponentFixture<LoadingComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [ LoadingComponent ]
+            imports: [LoadingComponent]
         })
             .compileComponents();
 
@@ -17,7 +17,7 @@ describe('LoadingComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

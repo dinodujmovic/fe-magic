@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SettingsFacade } from './settings.facade';
+import { Component } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { SettingsFacade } from "./settings.facade";
 
 @Component({
-    templateUrl: './settings.component.html',
-    styleUrls: ['./settings.component.scss']
+    templateUrl: "./settings.component.html",
+    styleUrls: ["./settings.component.scss"]
 })
 export class SettingsComponent {
-
     form: FormGroup;
     themes: string[];
 
     constructor(private fb: FormBuilder, private settingsFacade: SettingsFacade) {
-        const settings = this.settingsFacade.getSettings()
+        const settings = this.settingsFacade.getSettings();
 
         this.themes = settings.themes;
 

@@ -1,22 +1,26 @@
 /*
-Angular router Preloading Strategy is a feature that allows you to load the lazy-loaded modules before they are actually needed by the user.
+Angular router Preloading Strategy is a feature that allows you to load the lazy-loaded modules before they are
+actually needed by the user.
 This can help to reduce the loading time and improve the user experience.
 
 By default, Angular uses the NoPreloading strategy, which means that all the lazy-loaded modules
-are loaded only when the user navigates to the corresponding route. But with preloading strategy, the modules are loaded in the background, 
+are loaded only when the user navigates to the corresponding route. But with preloading strategy,
+ the modules are loaded in the background,
 so that they are available immediately when the user navigates to the corresponding route.
 
-
 Angular provides three preloading strategies:
-    - NoPreloading: 
-    This is the default strategy, which means that no preloading is done, and the modules are loaded only when the user navigates to the corresponding route.
+    - NoPreloading:
+    This is the default strategy, which means that no preloading is done, and the modules are loaded
+    only when the user navigates to the corresponding route.
 
-    - PreloadAllModules: 
-    This strategy preloads all the lazy-loaded modules as soon as the application is loaded. This can cause the initial load time of the application to be longer, but it ensures that all the modules are available immediately when the user navigates to the corresponding route.
+    - PreloadAllModules:
+    This strategy preloads all the lazy-loaded modules as soon as the application is loaded.
+    This can cause the initial load time of the application to be longer, but it ensures that all the modules are
+    available immediately when the user navigates to the corresponding route.
 
-    - Custom Preloading: 
-    This strategy allows you to define your own preloading logic, where you can choose which modules to preload and when to preload them.
-
+    - Custom Preloading:
+    This strategy allows you to define your own preloading logic, where you can choose which modules to
+    preload and when to preload them.
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
@@ -25,19 +29,19 @@ Angular provides three preloading strategies:
 export class AppRoutingModule { }
 */
 
-import { Injectable } from '@angular/core';
-import { PreloadingStrategy, Route } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { PreloadingStrategy, Route } from "@angular/router";
+import { Observable, of } from "rxjs";
 
 @Injectable()
 export class PreloadModulesStrategy implements PreloadingStrategy {
     preload(route: Route, load: () => Observable<any>): Observable<any> {
-        if (route.data && route.data['preload']) {
-            console.log('Preloaded: ' + route.path);
+        if (route.data && route.data.preload) {
+            // eslint-disable-next-line no-console
+            console.log(`Preloaded: ${route.path}`);
 
             return load();
-        } else {
-            return of(null);
         }
+        return of(null);
     }
 }

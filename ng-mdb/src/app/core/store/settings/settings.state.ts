@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { State, Action, StateContext } from '@ngxs/store';
+import { State, Action, StateContext } from "@ngxs/store";
 import { UpdateSettings } from "@store/settings/settings.action";
 
 export interface SettingsStateModel {
@@ -9,7 +9,7 @@ export interface SettingsStateModel {
 }
 
 @State<SettingsStateModel>({
-    name: 'settings',
+    name: "settings",
     defaults: {
         themes: ["winter", "light", "dark", "cupcake", "bumblebee", "emerald", "corporate"],
         theme: "winter",

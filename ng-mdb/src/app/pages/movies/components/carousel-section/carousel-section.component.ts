@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 
 @Component({
-    selector: 'mdb-carousel-section',
+    selector: "mdb-carousel-section",
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
   <div class="container mb-10">
@@ -17,5 +17,5 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   `
 })
 export class CarouselSectionComponent {
-  @Input() title = ''
+  @Input() title = "";
 }

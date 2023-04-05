@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ErrorAlertComponent } from './error-alert.component';
+import { ErrorAlertComponent } from "./error-alert.component";
 
-describe('ErrorAlertComponent', () => {
+describe("ErrorAlertComponent", () => {
     let component: ErrorAlertComponent;
     let fixture: ComponentFixture<ErrorAlertComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ ErrorAlertComponent ]
+            declarations: [ErrorAlertComponent]
         })
             .compileComponents();
 
@@ -17,7 +17,7 @@ describe('ErrorAlertComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

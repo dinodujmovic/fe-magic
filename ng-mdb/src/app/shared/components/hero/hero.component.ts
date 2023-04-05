@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 
 @Component({
-    selector: 'mdb-hero',
+    selector: "mdb-hero",
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
   <div class="hero mb-10" style="background-image: url({{background}});">
@@ -18,6 +18,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   `
 })
 export class HeroComponent {
-  @Input() title = ''
-  @Input() background = '';
+  @Input() title = "";
+  @Input() background = "";
 }

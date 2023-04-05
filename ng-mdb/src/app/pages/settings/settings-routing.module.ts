@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SettingsComponent } from '@pages/settings/settings.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { SettingsComponent } from "@pages/settings/settings.component";
 
 const routes: Routes = [
     {
-        path: '',
+        path: "",
         component: SettingsComponent,
     }
 ];
@@ -14,5 +14,5 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 export class SettingsRoutingModule {
-    static components = [SettingsComponent]
+    static components = [SettingsComponent];
 }

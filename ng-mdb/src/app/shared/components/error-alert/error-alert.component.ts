@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 
 @Component({
-    selector: 'mdb-error-alert',
+    selector: "mdb-error-alert",
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
       <div *ngIf="error" class="alert alert-error shadow-lg">
@@ -10,5 +10,5 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     `,
 })
 export class ErrorAlertComponent {
-    @Input() error = '';
+    @Input() error = "";
 }

@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-    selector: 'mdb-header',
+    selector: "mdb-header",
     template: `
         <div class="container mx-auto navbar bg-base-100">
         <div class="flex-1">

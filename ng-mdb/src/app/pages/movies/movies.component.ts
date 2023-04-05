@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component } from "@angular/core";
+import { Observable } from "rxjs";
 
-import { TTime } from '@core/models/types/TTime';
-import { MoviesFacade } from '@pages/movies/movies.facade';
-import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from '@store/movies/movies.state';
+import { TTime } from "@core/models/types/TTime";
+import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from "@store/movies/movies.state";
+import { MoviesFacade } from "@pages/movies/movies.facade";
 
 @Component({
-    templateUrl: './movies.component.html',
+    templateUrl: "./movies.component.html",
 })
 export class MoviesComponent {
-    trendingMoviesTime = 'day';
+    trendingMoviesTime = "day";
     trendingMovies$: Observable<TrendingMoviesStateModel>;
     nowPlayingMovies$: Observable<NowPlayingMoviesStateModel>;
 

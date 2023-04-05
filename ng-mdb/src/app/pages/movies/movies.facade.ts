@@ -9,8 +9,11 @@ import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from "@store/mov
 
 @Injectable()
 export class MoviesFacade {
-    @Select((state: IAppState) => state.movies.trendingMovies) private trendingMovies$!: Observable<TrendingMoviesStateModel>;
-    @Select((state: IAppState) => state.movies.nowPlayingMovies) private nowPlayingMovies$!: Observable<NowPlayingMoviesStateModel>;
+    @Select((state: IAppState) => state.movies.trendingMovies)
+    private trendingMovies$!: Observable<TrendingMoviesStateModel>;
+
+    @Select((state: IAppState) => state.movies.nowPlayingMovies)
+    private nowPlayingMovies$!: Observable<NowPlayingMoviesStateModel>;
 
     constructor(private store: Store) {
     }
@@ -25,10 +28,10 @@ export class MoviesFacade {
 
     loadHomePage(): void {
         // Load the data in this exact order
-        concat(this.store.dispatch(new GetTrendingMovies()), this.store.dispatch(new GetNowPlayingMovies()))
+        concat(this.store.dispatch(new GetTrendingMovies()), this.store.dispatch(new GetNowPlayingMovies()));
     }
 
     loadTrendingMovies(time: TTime) {
-        this.store.dispatch(new GetTrendingMovies(time))
+        this.store.dispatch(new GetTrendingMovies(time));
     }
 }

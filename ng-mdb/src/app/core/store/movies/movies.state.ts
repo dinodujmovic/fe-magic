@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { IApiResponse, IMovieResponse } from '@core/models';
+import { Injectable } from "@angular/core";
+import { IApiResponse, IMovieResponse } from "@core/models";
 
-import { MovieService } from '@core/services/movie.service';
-import { State, Action, StateContext } from '@ngxs/store';
-import { GetNowPlayingMovies, GetTrendingMovies } from '@store/movies/movies.action';
+import { MovieService } from "@core/services/movie.service";
+import { State, Action, StateContext } from "@ngxs/store";
+import { GetNowPlayingMovies, GetTrendingMovies } from "@store/movies/movies.action";
 import { tap } from "rxjs";
 
 export interface TrendingMoviesStateModel {
@@ -31,7 +31,7 @@ export interface MoviesStateModel {
 }
 
 @State<MoviesStateModel>({
-    name: 'movies',
+    name: "movies",
     defaults: {
         selectedMovie: {},
         trendingMovies: {
@@ -71,7 +71,7 @@ export class MovieState {
 
         return this.movieService.getTrendingMovies(action.time).pipe(
             tap((response: IApiResponse<IMovieResponse[]>) => {
-                if ('results' in response) {
+                if ("results" in response) {
                     ctx.patchState({
                         trendingMovies: {
                             data: response.results,
@@ -82,15 +82,16 @@ export class MovieState {
                             error: undefined
                         }
                     });
-                } else {                    
+                } else {
                     ctx.patchState({
                         trendingMovies: {
                             ...state.trendingMovies,
                             error: response.status_message,
                         }
-                    })
+                    });
                 }
-            }))
+            })
+        );
     }
 
     @Action(GetNowPlayingMovies)
@@ -107,7 +108,7 @@ export class MovieState {
 
         return this.movieService.getNowPlayingMovies().pipe(
             tap((response: IApiResponse<IMovieResponse[]>) => {
-                if ('results' in response) {
+                if ("results" in response) {
                     ctx.patchState({
                         nowPlayingMovies: {
                             data: response.results,
@@ -124,8 +125,9 @@ export class MovieState {
                             ...state.nowPlayingMovies,
                             error: response.status_message,
                         }
-                    })
+                    });
                 }
-            }))
+            })
+        );
     }
 }

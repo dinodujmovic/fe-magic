@@ -9,6 +9,7 @@
         "*.ts"
       ],
       "extends": [
+        "airbnb-base",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
@@ -16,12 +17,27 @@
       ],
       "rules": {
         "import/prefer-default-export": "off",
-        "indent": ["error"],
-        "no-multi-spaces": ["error"],
-        "key-spacing": ["error"],
-        "keyword-spacing": ["error"],
-        "space-in-parens": ["error"],
-        "space-before-blocks": ["error"],
+        "import/no-unresolved": "off",
+        "import/extensions": "off",
+        "quotes": [
+          "error",
+          "double"
+        ],
+        "lines-between-class-members": "off",
+        "max-len": [
+          "error",
+          150
+        ],
+        "no-useless-constructor": "off",
+        "class-methods-use-this": "off",
+        "max-classes-per-file": "off",
+        "comma-dangle": "off",
+        "indent": [
+          "error",
+          4
+        ],
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/no-explicit-any": 0,
         "@angular-eslint/directive-selector": [
           "error",

@@ -4,6 +4,6 @@ export interface SettingsPayload {
 }
 
 export class UpdateSettings {
-    static type = '[Settings] Update settings';
+    static type = "[Settings] Update settings";
     constructor(public settings: SettingsPayload) { }
 }

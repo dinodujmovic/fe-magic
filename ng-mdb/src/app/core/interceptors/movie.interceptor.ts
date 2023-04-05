@@ -1,10 +1,11 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import {
+    HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
+} from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "@environment/environment";
 import { Store } from "@ngxs/store";
 import { IAppState } from "@store/IAppState";
 import { Observable } from "rxjs";
-
 
 @Injectable()
 export class MovieInterceptor implements HttpInterceptor {
@@ -15,12 +16,11 @@ export class MovieInterceptor implements HttpInterceptor {
 
         if (req.url.includes(environment.moviesAPI) && apiKey) {
             const modifiedReq = req.clone({
-                params: req.params.append('api_key', apiKey)
+                params: req.params.append("api_key", apiKey)
             });
 
             return next.handle(modifiedReq);
-        } else {
-            return next.handle(req);
         }
+        return next.handle(req);
     }
 }
