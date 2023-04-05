@@ -21,12 +21,8 @@ export interface SettingsStateModel {
 export class SettingsState {
     @Action(UpdateSettings)
     updateSettings(ctx: StateContext<SettingsStateModel>, action: UpdateSettings) {
-        console.log(action.settings);
-
         ctx.patchState({
             ...action.settings
         });
-
-        console.log(ctx.getState())
     }
 }

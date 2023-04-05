@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   selector: 'mdb-carousel-section',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-  <div class="container">
+  <div class="container mb-10">
       <h1 class="text-xl font-bold mb-2">{{ title }}</h1>
 
       <ng-content select="[data-carousel-section-content-other]"></ng-content>

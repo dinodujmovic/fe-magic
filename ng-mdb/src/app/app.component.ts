@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from "rxjs";
 import { IAppState } from '@core/store/IAppState';
 
 @Component({

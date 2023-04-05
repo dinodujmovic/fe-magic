@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { IApiResponse, IMovieResponse } from '@core/models';
-import { tap } from 'rxjs/internal/operators/tap';
 
 import { MovieService } from '@core/services/movie.service';
 import { State, Action, StateContext } from '@ngxs/store';
 import { GetNowPlayingMovies, GetTrendingMovies } from '@store/movies/movies.action';
+import { tap } from "rxjs";
 
 export interface TrendingMoviesStateModel {
     data: IMovieResponse[];

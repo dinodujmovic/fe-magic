@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MovieCardComponent } from '@shared/components/movie-card/movie-card.component';
 import { LoadingComponent } from '@shared/components/loading/loading.component';
 import { ErrorAlertComponent } from '@shared/components/error-alert/error-alert.component';
+import { HeroComponent } from '@shared/components/hero/hero.component';
 
-const components = [MovieCardComponent, LoadingComponent, ErrorAlertComponent]
+const components = [HeroComponent, LoadingComponent, ErrorAlertComponent]
 
 @NgModule({
   imports: [
