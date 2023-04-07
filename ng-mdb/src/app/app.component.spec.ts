@@ -22,16 +22,20 @@ describe("AppComponent", () => {
         expect(app).toBeTruthy();
     });
 
-    it("should have as title 'ng-mdb'", () => {
+    it("page should have default data-theme set to winter", () => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.componentInstance;
-        expect(app.title).toEqual("ng-mdb");
+
+        expect(document.documentElement.getAttribute("data-theme")).toEqual("winter");
     });
 
-    it("should render title", () => {
+    it("should render header, footer and toaster", () => {
         const fixture = TestBed.createComponent(AppComponent);
         fixture.detectChanges();
         const compiled = fixture.nativeElement as HTMLElement;
-        expect(compiled.querySelector(".content span")?.textContent).toContain("ng-mdb app is running!");
+        expect(compiled.querySelector("mdb-header")).toBeTruthy();
+        expect(compiled.querySelector("router-outlet")).toBeTruthy();
+        expect(compiled.querySelector("mdb-footer")).toBeTruthy();
+        expect(compiled.querySelector("mdb-toaster")).toBeTruthy();
     });
 });

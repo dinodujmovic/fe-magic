@@ -4,11 +4,11 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
     selector: "mdb-loading",
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
-      <div *ngIf="loading">\
-        <div>Loading...</div>
-        <progress class="progress w-56"></progress>
-      </div>
-  `,
+        <div class="mdb-loading" *ngIf="loading">
+            <div>Loading...</div>
+<!--            <progress class="progress w-56"></progress>-->
+        </div>
+    `,
 })
 export class LoadingComponent {
     @Input() loading = false;

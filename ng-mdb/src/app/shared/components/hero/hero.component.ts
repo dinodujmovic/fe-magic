@@ -4,18 +4,20 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
     selector: "mdb-hero",
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
-  <div class="hero mb-10" style="background-image: url({{background}});">
-    <div class="hero-overlay bg-opacity-60"></div>
-    <div class="hero-content text-center text-neutral-content h-96">
-        <div class="max-w-md">
-            <h1 class="mb-5 text-5xl font-bold text-white">{{ title }}</h1>
-            <p class="mb-5 text-white">
-                <ng-content></ng-content>
-            </p>
+        <div class="mdb-hero hero mb-10" [style.background-image]="'url(' + background + ')'">
+            <div class="hero-overlay bg-opacity-60"></div>
+            <div class="hero-content text-center text-neutral-content h-96">
+                <div class="max-w-md">
+                    <h1 class="mdb-hero__title mb-5 text-5xl font-bold text-white">
+                        {{ title }}
+                    </h1>
+                    <p class="mdb-hero__content mb-5 text-white">
+                        <ng-content></ng-content>
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-  `
+    `
 })
 export class HeroComponent {
     @Input() title = "";

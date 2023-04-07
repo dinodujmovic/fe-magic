@@ -10,13 +10,11 @@ import { IAppState } from "@core/store/IAppState";
 
         <router-outlet></router-outlet>
 
-<mdb-footer class="mt-auto"></mdb-footer>
+        <mdb-footer class="mt-auto"></mdb-footer>
         <mdb-toaster></mdb-toaster>
     `,
 })
 export class AppComponent {
-    title = "ng-db";
-
     @Select((state: IAppState) => state.settings.theme) private theme$!: Observable<string>;
 
     constructor() {
