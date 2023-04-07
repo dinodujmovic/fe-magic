@@ -4,9 +4,9 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
     selector: "mdb-error-alert",
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
-      <div *ngIf="error" class="alert alert-error shadow-lg">
-        <span>{{ error }}</span>
-      </div>
+        <div *ngIf="error" class="alert alert-error shadow-lg">
+            <span>{{ error }}</span>
+        </div>
     `,
 })
 export class ErrorAlertComponent {

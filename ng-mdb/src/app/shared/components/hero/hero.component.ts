@@ -18,6 +18,6 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
   `
 })
 export class HeroComponent {
-  @Input() title = "";
-  @Input() background = "";
+    @Input() title = "";
+    @Input() background = "";
 }

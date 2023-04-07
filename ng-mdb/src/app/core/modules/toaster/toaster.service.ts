@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 
 export enum GrowlerMessageType {
-  Success,
-  Danger,
-  Warning,
-  Info
+    Success,
+    Danger,
+    Warning,
+    Info
 }
 
 @Injectable()

@@ -1,70 +1,75 @@
 {
-  "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
-  "overrides": [
-    {
-      "files": [
-        "*.ts"
-      ],
-      "extends": [
-        "airbnb-base",
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ],
-      "rules": {
-        "import/prefer-default-export": "off",
-        "import/no-unresolved": "off",
-        "import/extensions": "off",
-        "quotes": [
-          "error",
-          "double"
-        ],
-        "lines-between-class-members": "off",
-        "max-len": [
-          "error",
-          150
-        ],
-        "no-useless-constructor": "off",
-        "class-methods-use-this": "off",
-        "max-classes-per-file": "off",
-        "comma-dangle": "off",
-        "indent": [
-          "error",
-          4
-        ],
-        "no-shadow": "off",
-        "@typescript-eslint/no-shadow": "error",
-        "@typescript-eslint/no-explicit-any": 0,
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "mdb",
-            "style": "camelCase"
-          }
-        ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "mdb",
-            "style": "kebab-case"
-          }
-        ]
-      }
-    },
-    {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
-      "rules": {}
-    }
-  ]
+    "root": true,
+    "ignorePatterns": [
+        "projects/**/*"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "*.ts"
+            ],
+            "extends": [
+                "eslint:recommended",
+                "airbnb-base",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:@angular-eslint/recommended",
+                "plugin:@angular-eslint/template/process-inline-templates"
+            ],
+            "rules": {
+                // ESLint rules
+                "import/prefer-default-export": "off",
+                "import/no-unresolved": "off",
+                "import/extensions": "off",
+                "quotes": [
+                    "error",
+                    "double"
+                ],
+                "lines-between-class-members": "off",
+                "max-len": [
+                    "error",
+                    150
+                ],
+                "no-useless-constructor": "off",
+                "class-methods-use-this": "off",
+                "max-classes-per-file": "off",
+                "comma-dangle": "off",
+                "indent": "off",
+                // enable in TS rules
+                "no-shadow": "off",
+                // enable in TS rules
+                // TypeScript Eslint rules
+                "@typescript-eslint/indent": [
+                    "error",
+                    4
+                ],
+                "@typescript-eslint/no-shadow": "error",
+                "@typescript-eslint/no-explicit-any": 0,
+                // Angular ESLint rules
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "mdb",
+                        "style": "camelCase"
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "mdb",
+                        "style": "kebab-case"
+                    }
+                ]
+            }
+        },
+        {
+            "files": [
+                "*.html"
+            ],
+            "extends": [
+                "plugin:@angular-eslint/template/recommended"
+            ]
+        }
+    ]
 }

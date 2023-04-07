@@ -6,22 +6,22 @@ import { IAppState } from "@core/store/IAppState";
 @Component({
     selector: "mdb-root",
     template: `
-    <mdb-header></mdb-header>
+        <mdb-header></mdb-header>
 
-    <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
 
-    <mdb-footer class="mt-auto"></mdb-footer>
-    <mdb-toaster></mdb-toaster>
-`,
+<mdb-footer class="mt-auto"></mdb-footer>
+        <mdb-toaster></mdb-toaster>
+    `,
 })
 export class AppComponent {
-    title = "ng-mdb";
+    title = "ng-db";
 
-  @Select((state: IAppState) => state.settings.theme) private theme$!: Observable<string>;
+    @Select((state: IAppState) => state.settings.theme) private theme$!: Observable<string>;
 
-  constructor() {
-      this.theme$.subscribe((theme) => {
-          document.documentElement.setAttribute("data-theme", theme);
-      });
-  }
+    constructor() {
+        this.theme$.subscribe((theme) => {
+            document.documentElement.setAttribute("data-theme", theme);
+        });
+    }
 }
