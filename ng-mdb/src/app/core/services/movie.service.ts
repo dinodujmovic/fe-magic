@@ -12,9 +12,11 @@ import {
 const wrapAPI = (url: string, params?: any) => {
     const newUrl = new URL(`${environment.moviesAPI}/${url}`);
 
-    Object.entries(params).forEach(([key, value]: any) => {
-        newUrl.searchParams.append(key, value);
-    });
+    if (params) {
+        Object.entries(params).forEach(([key, value]: any) => {
+            newUrl.searchParams.append(key, value);
+        });
+    }
 
     return newUrl.toString();
 };
@@ -56,7 +58,7 @@ export class MovieService {
     }
 
     getMovieDetails(id: string): Observable<IMoveDetailsResponse | IErrorResponse> {
-        const url = wrapAPI(`movie/${id}}`);
+        const url = wrapAPI(`movie/${id}`);
 
         return this.http.get<IMoveDetailsResponse>(url).pipe(
             catchError(this.handleError)

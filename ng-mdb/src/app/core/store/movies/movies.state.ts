@@ -86,6 +86,7 @@ export class MovieState {
                     ctx.patchState({
                         trendingMovies: {
                             ...state.trendingMovies,
+                            loading: false,
                             error: response.status_message,
                         }
                     });
@@ -120,9 +121,11 @@ export class MovieState {
                         }
                     });
                 } else {
+                    console.log(state);
                     ctx.patchState({
                         nowPlayingMovies: {
                             ...state.nowPlayingMovies,
+                            loading: false,
                             error: response.status_message,
                         }
                     });
