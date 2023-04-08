@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 
-export enum GrowlerMessageType {
+export enum ToastMessageType {
     Success,
-    Danger,
+    Error,
     Warning,
     Info
 }
 
 @Injectable()
 export class ToasterService {
-    growl: (message: string, growlType: GrowlerMessageType) => number = () => 0;
+    toast: (message: string, toastType: ToastMessageType) => number = () => 0;
 }

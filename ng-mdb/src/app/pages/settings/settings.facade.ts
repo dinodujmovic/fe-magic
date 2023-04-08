@@ -19,7 +19,7 @@ export class SettingsFacade {
         this.store.dispatch(new UpdateSettings(settings))
             .pipe(take(1))
             .subscribe(() => {
-                this.toasterService.growl("Settings updated successfully", 3);
+                this.toasterService.toast("Settings updated successfully", 3);
             });
     }
 }

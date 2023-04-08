@@ -1,9 +1,10 @@
 import { Component, Input } from "@angular/core";
-import { GrowlerMessageType, ToasterService } from "@core/modules/toaster/toaster.service";
+import { ToastMessageType, ToasterService } from "@core/modules/toaster/toaster.service";
 import { LoggerService } from "@core/services/logger.service";
 
 class Toast {
     enabled = false;
+
     // timeoutId = 0;
 
     constructor(
@@ -33,7 +34,7 @@ class Toast {
     hide() {
         this.enabled = false;
         window.setTimeout(() => {
-            this.toastContainer.removeGrowl(this.id);
+            this.toastContainer.removeToast(this.id);
         }, this.timeout);
     }
 }
@@ -41,41 +42,43 @@ class Toast {
 @Component({
     selector: "mdb-toaster",
     template: `
-    <div [ngClass]="position" class="growler">
-      <div *ngFor="let growl of toasts" [ngClass]="{active: growl.enabled}"
-          class="growl alert {{ growl.messageType }}">
-          <span class="growl-message">{{ growl.message }}</span>
-      </div>
-    </div>
-  `,
-    styleUrls: ["toaster.component.scss"]
+        <div>
+            <div *ngFor="let toast of toasts" [ngClass]="{active: toast.enabled}"
+                 class="toast {{position}}">
+                <div class="alert {{ toast.messageType }}">
+                    {{ toast.message }}
+                </div>
+            </div>
+        </div>
+    `,
 })
 export class ToasterComponent {
-    private growlCount = 0;
+    private toastCount = 0;
     toasts: Toast[] = [];
 
-    @Input() position = "bottom-right";
+    // https://daisyui.com/components/toast/
+    @Input() position = "toast-bottom toast-end";
     @Input() timeout = 3000;
 
     constructor(private toasterService: ToasterService, private logger: LoggerService) {
-        this.toasterService.growl = this.growl.bind(this);
+        this.toasterService.toast = this.toast.bind(this);
     }
 
-    growl(message: string, growlType: GrowlerMessageType): number {
-        this.growlCount += 1;
-        const bootstrapAlertType = GrowlerMessageType[growlType].toLowerCase();
+    toast(message: string, toastType: ToastMessageType): number {
+        this.toastCount += 1;
+        const bootstrapAlertType = ToastMessageType[toastType].toLowerCase();
         const messageType = `alert-${bootstrapAlertType}`;
-        const toast = new Toast(this.growlCount, message, messageType, this.timeout, this);
+        const toast = new Toast(this.toastCount, message, messageType, this.timeout, this);
 
         this.toasts.push(toast);
         return toast.id;
     }
 
-    removeGrowl(id: number) {
-        this.toasts.forEach((growl: Toast, index: number) => {
-            if (growl.id === id) {
+    removeToast(id: number) {
+        this.toasts.forEach((toast: Toast, index: number) => {
+            if (toast.id === id) {
                 this.toasts.splice(index, 1);
-                this.growlCount -= 1;
+                this.toastCount -= 1;
                 this.logger.log(`removed ${id}`);
             }
         });
