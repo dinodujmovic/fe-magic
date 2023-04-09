@@ -121,7 +121,6 @@ export class MovieState {
                         }
                     });
                 } else {
-                    console.log(state);
                     ctx.patchState({
                         nowPlayingMovies: {
                             ...state.nowPlayingMovies,

@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { SettingsFacade } from "./settings.facade";
 
 @Component({
-    templateUrl: "./settings.component.html",
-    styleUrls: ["./settings.component.scss"]
+    templateUrl: "./settings.component.html"
 })
 export class SettingsComponent {
     form: FormGroup;

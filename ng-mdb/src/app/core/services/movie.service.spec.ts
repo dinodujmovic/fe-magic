@@ -1,5 +1,5 @@
 import { TestBed } from "@angular/core/testing";
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from "@angular/common/http/testing";
+import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 import { IApiResponse, IMovieResponse } from "@core/models";
 import { environment } from "@environment/environment";
 import { TTime } from "@core/models/types/TTime";

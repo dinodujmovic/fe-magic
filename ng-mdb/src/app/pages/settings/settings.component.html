@@ -1,4 +1,4 @@
-<div class="container mx-auto mt-5">
+<div class="mdb-settings container mx-auto mt-5">
     <h1 class="text-xl font-bold mb-2">Settings</h1>
 
     <div class="alert alert-info shadow-lg">
@@ -13,14 +13,14 @@
             <label class="label">
                 <span class="label-text">API key</span>
             </label>
-            <input formControlName="apiKey" type="text" placeholder="Type here" class="input w-full max-w-xs"/>
+            <input formControlName="apiKey" type="text" placeholder="Type here" class="mdb-settings__api-key-input input w-full max-w-xs"/>
         </div>
 
         <div class="mt-10">
             <label class="label">
                 <span class="label-text">Theme</span>
             </label>
-            <select formControlName="theme" class="select select-ghost w-full max-w-xs">
+            <select formControlName="theme" class="mdb-settings__theme-select select select-ghost w-full max-w-xs">
                 <option disabled selected>Pick theme</option>
                 <option *ngFor="let t of themes" [value]="t">{{t}}</option>
             </select>

@@ -16,17 +16,14 @@ describe("AppComponent", () => {
         }).compileComponents();
     });
 
+    it("page should have default data-theme set to winter", () => {
+        expect(document.documentElement.getAttribute("data-theme")).toEqual("winter");
+    });
+
     it("should create the app", () => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.componentInstance;
         expect(app).toBeTruthy();
-    });
-
-    it("page should have default data-theme set to winter", () => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.componentInstance;
-
-        expect(document.documentElement.getAttribute("data-theme")).toEqual("winter");
     });
 
     it("should render header, footer and toaster", () => {

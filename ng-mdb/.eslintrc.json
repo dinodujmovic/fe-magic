@@ -3,6 +3,7 @@
     "ignorePatterns": [
         "projects/**/*"
     ],
+    "plugins": ["unused-imports"],
     "overrides": [
         {
             "files": [
@@ -33,10 +34,14 @@
                 "class-methods-use-this": "off",
                 "max-classes-per-file": "off",
                 "comma-dangle": "off",
-                "indent": "off",
-                // enable in TS rules
-                "no-shadow": "off",
-                // enable in TS rules
+                "indent": "off", // enable in TS rules
+                "no-shadow": "off", // enable in TS rules
+                // unused-imports plugin
+                "unused-imports/no-unused-imports": "error",
+                "unused-imports/no-unused-vars": [
+                    "warn",
+                    { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+                ],
                 // TypeScript Eslint rules
                 "@typescript-eslint/indent": [
                     "error",

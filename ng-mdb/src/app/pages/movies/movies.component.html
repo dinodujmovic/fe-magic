@@ -1,50 +1,53 @@
-<mdb-hero title="Welcome" background="assets/hero.jpg">
-    <p>
-        Millions of movies to discover. Explore now.
-    </p>
-</mdb-hero>
+<div class="mdb-movies">
+    <mdb-hero title="Welcome" background="assets/hero.jpg">
+        <p>
+            Millions of movies to discover. Explore now.
+        </p>
+    </mdb-hero>
 
-<div class="container mx-auto mb-20">
-    <mdb-carousel-section title="Trending movies" *ngIf="trendingMovies$ | async as movies">
-        <div data-carousel-section-content-other
-             class="btn-group btn-group-vertical lg:btn-group-horizontal mb-6">
-            <button class="btn" [ngClass]="{'btn-active': trendingMoviesTime === 'day'}"
-                    (click)="getTrendingMovies('day')">Today
-            </button>
-            <button class="btn" [ngClass]="{'btn-active': trendingMoviesTime === 'week'}"
-                    (click)="getTrendingMovies('week')">This week
-            </button>
-        </div>
+    <div class="container mx-auto mb-20">
+        <mdb-carousel-section class="mdb-trending-movies" title="Trending movies"
+                              *ngIf="trendingMovies$ | async as movies">
+            <div data-carousel-section-content-other
+                 class="btn-group btn-group-vertical lg:btn-group-horizontal mb-6">
+                <button class="btn" [ngClass]="{'btn-active': trendingMoviesTime === 'day'}"
+                        (click)="getTrendingMovies('day')">Today
+                </button>
+                <button class="btn" [ngClass]="{'btn-active': trendingMoviesTime === 'week'}"
+                        (click)="getTrendingMovies('week')">This week
+                </button>
+            </div>
 
-        <mdb-loading data-carousel-section-content-other [loading]="movies.loading">
-        </mdb-loading>
+            <mdb-loading data-carousel-section-content-other [loading]="movies.loading">
+            </mdb-loading>
 
-        <mdb-error-alert data-carousel-section-content-other [error]="movies.error">
-        </mdb-error-alert>
+            <mdb-error-alert data-carousel-section-content-other [error]="movies.error">
+            </mdb-error-alert>
 
-        <mdb-carousel-item data-carousel-section-content-items *ngFor="let movie of movies.data">
-            <mdb-movie-card [title]="movie.title"
-                            [poster]="movie.poster_path"
-                            [rating]="movie.vote_average"
-                            [date]="movie.release_date">
-            </mdb-movie-card>
-        </mdb-carousel-item>
-    </mdb-carousel-section>
+            <mdb-carousel-item data-carousel-section-content-items *ngFor="let movie of movies.data">
+                <mdb-movie-card [title]="movie.title"
+                                [poster]="movie.poster_path"
+                                [rating]="movie.vote_average"
+                                [date]="movie.release_date">
+                </mdb-movie-card>
+            </mdb-carousel-item>
+        </mdb-carousel-section>
 
+        <mdb-carousel-section class="mdb-playing-movies" title="Now playing"
+                              *ngIf="nowPlayingMovies$ | async as movies">
+            <mdb-loading data-carousel-section-content-other [loading]="movies.loading">
+            </mdb-loading>
 
-    <mdb-carousel-section title="Now playing" *ngIf="nowPlayingMovies$ | async as movies">
-        <mdb-loading data-carousel-section-content-other [loading]="movies.loading">
-        </mdb-loading>
+            <mdb-error-alert data-carousel-section-content-other [error]="movies.error">
+            </mdb-error-alert>
 
-        <mdb-error-alert data-carousel-section-content-other [error]="movies.error">
-        </mdb-error-alert>
-
-        <mdb-carousel-item data-carousel-section-content-items *ngFor="let movie of movies.data">
-            <mdb-movie-card [title]="movie.title"
-                            [poster]="movie.poster_path"
-                            [rating]="movie.vote_average"
-                            [date]="movie.release_date">
-            </mdb-movie-card>
-        </mdb-carousel-item>
-    </mdb-carousel-section>
+            <mdb-carousel-item data-carousel-section-content-items *ngFor="let movie of movies.data">
+                <mdb-movie-card [title]="movie.title"
+                                [poster]="movie.poster_path"
+                                [rating]="movie.vote_average"
+                                [date]="movie.release_date">
+                </mdb-movie-card>
+            </mdb-carousel-item>
+        </mdb-carousel-section>
+    </div>
 </div>

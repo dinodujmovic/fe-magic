@@ -8,9 +8,15 @@ import { environment } from "@environment/environment";
 describe("MovieInterceptor", () => {
     let httpTestingController: HttpTestingController;
     let clientMock: HttpClient;
-    let store: Store;
+    let mockStore: jasmine.SpyObj<Store>;
 
     beforeEach(() => {
+        mockStore = jasmine.createSpyObj(
+            [
+                "selectSnapshot",
+            ]
+        );
+
         TestBed.configureTestingModule({
             providers: [
                 {
@@ -18,15 +24,13 @@ describe("MovieInterceptor", () => {
                     useClass: MovieInterceptor,
                     multi: true
                 },
-                // If we don't want to use spy
-                // { provide: Store, useValue: { selectSnapshot: () => "testApiKey" } }
+                { provide: Store, useValue: mockStore }
             ],
             imports: [
                 HttpClientTestingModule,
             ]
         });
 
-        store = TestBed.inject(Store);
         clientMock = TestBed.inject(HttpClient);
         httpTestingController = TestBed.inject(HttpTestingController);
     });
@@ -36,10 +40,10 @@ describe("MovieInterceptor", () => {
     });
 
     it("should add api key to request params when calling moviesAPI", () => {
-        spyOn(store, "selectSnapshot").and.returnValue("testApiKey"); // same here
+        mockStore.selectSnapshot.and.returnValue("testApiKey");
 
         const url = `${environment.moviesAPI}/movies`;
-
+        // Use HttpClientTesting to trigger HTTP call
         clientMock.get(url).subscribe();
 
         const httpReq = httpTestingController.expectOne(`${url}?api_key=testApiKey`);
@@ -49,7 +53,7 @@ describe("MovieInterceptor", () => {
 
     it("should not add api key to request params when calling non-moviesAPI", () => {
         const url = "something.com/data";
-
+        // Use HttpClientTesting to trigger HTTP call
         clientMock.get(url).subscribe();
 
         const httpReq = httpTestingController.expectOne(url);
