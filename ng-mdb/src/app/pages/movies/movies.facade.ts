@@ -1,11 +1,10 @@
 import { Injectable } from "@angular/core";
-import { concat, Observable } from "rxjs";
-
 import { TTime } from "@core/models/types/TTime";
 import { Select, Store } from "@ngxs/store";
 import { IAppState } from "@store/IAppState";
 import { GetNowPlayingMovies, GetTrendingMovies } from "@store/movies/movies.action";
 import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from "@store/movies/movies.state";
+import { concat, Observable } from "rxjs";
 
 @Injectable()
 export class MoviesFacade {

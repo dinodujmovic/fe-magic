@@ -1,15 +1,15 @@
+import { NO_ERRORS_SCHEMA } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-
+import { By } from "@angular/platform-browser";
+import { NOW_PLAYING_MOVIES_STATE_MODEL_MOCK } from "@mocks/NowPlayingMoviesStateModelMock";
+import { TRENDING_MOVIES_STATE_MODEL_MOCK } from "@mocks/TrendingMoviesStateModelMock";
+import { CarouselItemComponent } from "@pages/movies/components/carousel-item/carousel-item.component";
+import { CarouselSectionComponent } from "@pages/movies/components/carousel-section/carousel-section.component";
+import { MovieCardComponent } from "@pages/movies/components/movie-card/movie-card.component";
 import { MoviesFacade } from "@pages/movies/movies.facade";
 import { SharedModule } from "@shared/shared.module";
 import { of } from "rxjs";
-import { CarouselSectionComponent } from "@pages/movies/components/carousel-section/carousel-section.component";
-import { CarouselItemComponent } from "@pages/movies/components/carousel-item/carousel-item.component";
-import { MovieCardComponent } from "@pages/movies/components/movie-card/movie-card.component";
-import { By } from "@angular/platform-browser";
-import { TRENDING_MOVIES_STATE_MODEL_MOCK } from "@mocks/TrendingMoviesStateModelMock";
-import { NOW_PLAYING_MOVIES_STATE_MODEL_MOCK } from "@mocks/NowPlayingMoviesStateModelMock";
-import { NO_ERRORS_SCHEMA } from "@angular/core";
+
 import { MoviesComponent } from "./movies.component";
 
 describe("MoviesComponent", () => {

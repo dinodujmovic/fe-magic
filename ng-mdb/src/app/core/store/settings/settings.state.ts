@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { State, Action, StateContext } from "@ngxs/store";
+import { Action, State, StateContext } from "@ngxs/store";
 import { UpdateSettings } from "@store/settings/settings.action";
 
 export interface SettingsStateModel {

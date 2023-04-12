@@ -1,8 +1,9 @@
-import { TestBed } from "@angular/core/testing";
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
+import { TestBed } from "@angular/core/testing";
 import { IApiResponse, IMovieResponse } from "@core/models";
-import { environment } from "@environment/environment";
 import { TTime } from "@core/models/types/TTime";
+import { environment } from "@environment/environment";
+
 import { MovieService } from "./movie.service";
 
 describe("MovieService", () => {

@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { IApiResponse, IMovieResponse } from "@core/models";
-
 import { MovieService } from "@core/services/movie.service";
-import { State, Action, StateContext } from "@ngxs/store";
+import { Action, State, StateContext } from "@ngxs/store";
 import { GetNowPlayingMovies, GetTrendingMovies } from "@store/movies/movies.action";
 import { tap } from "rxjs";
 

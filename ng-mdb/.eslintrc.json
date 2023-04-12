@@ -3,15 +3,18 @@
     "ignorePatterns": [
         "projects/**/*"
     ],
-    "plugins": ["unused-imports"],
+    "plugins": ["unused-imports", "simple-import-sort"],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
     "overrides": [
         {
             "files": [
                 "*.ts"
             ],
             "extends": [
-                "eslint:recommended",
                 "airbnb-base",
+                "airbnb-typescript/base",
                 "plugin:@typescript-eslint/recommended",
                 "plugin:@angular-eslint/recommended",
                 "plugin:@angular-eslint/template/process-inline-templates"
@@ -21,11 +24,11 @@
                 "import/prefer-default-export": "off",
                 "import/no-unresolved": "off",
                 "import/extensions": "off",
-                "quotes": [
-                    "error",
-                    "double"
-                ],
-                "lines-between-class-members": "off",
+                "simple-import-sort/imports": "error",
+                "simple-import-sort/exports": "error",
+                "import/first": "error",
+                "import/newline-after-import": "error",
+                "import/no-duplicates": "error",
                 "max-len": [
                     "error",
                     150
@@ -33,10 +36,7 @@
                 "no-useless-constructor": "off",
                 "class-methods-use-this": "off",
                 "max-classes-per-file": "off",
-                "comma-dangle": "off",
-                "indent": "off", // enable in TS rules
-                "no-shadow": "off", // enable in TS rules
-                // unused-imports plugin
+                // eslint-plugin-unused-imports rules
                 "unused-imports/no-unused-imports": "error",
                 "unused-imports/no-unused-vars": [
                     "warn",
@@ -47,6 +47,9 @@
                     "error",
                     4
                 ],
+                "@typescript-eslint/comma-dangle": "off",
+                "@typescript-eslint/lines-between-class-members": "off",
+                "@typescript-eslint/quotes": ["error","double"],
                 "@typescript-eslint/no-shadow": "error",
                 "@typescript-eslint/no-explicit-any": 0,
                 // Angular ESLint rules

@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
-import { MoviesFacade } from "@pages/movies/movies.facade";
 import { NgxsModule, Store } from "@ngxs/store";
+import { MoviesFacade } from "@pages/movies/movies.facade";
 import { GetNowPlayingMovies, GetTrendingMovies } from "@store/movies/movies.action";
 
 describe("MovieFacade", () => {

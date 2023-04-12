@@ -1,9 +1,9 @@
-import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
-import { MovieInterceptor } from "@core/interceptors/movie.interceptor";
-import { Store } from "@ngxs/store";
-import { TestBed } from "@angular/core/testing";
 import { HTTP_INTERCEPTORS, HttpClient } from "@angular/common/http";
+import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
+import { TestBed } from "@angular/core/testing";
+import { MovieInterceptor } from "@core/interceptors/movie.interceptor";
 import { environment } from "@environment/environment";
+import { Store } from "@ngxs/store";
 
 describe("MovieInterceptor", () => {
     let httpTestingController: HttpTestingController;

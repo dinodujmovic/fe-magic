@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { By } from "@angular/platform-browser";
+
 import { ErrorAlertComponent } from "./error-alert.component";
 
 const ERROR = "This is error alert";

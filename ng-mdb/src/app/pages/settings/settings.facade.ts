@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
+import { ToasterService } from "@core/modules/toaster/toaster.service";
 import { Store } from "@ngxs/store";
 import { IAppState } from "@store/IAppState";
-import { ToasterService } from "@core/modules/toaster/toaster.service";
 import { SettingsPayload, UpdateSettings } from "@store/settings/settings.action";
 import { SettingsStateModel } from "@store/settings/settings.state";
 import { take } from "rxjs";

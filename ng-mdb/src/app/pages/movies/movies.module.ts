@@ -1,9 +1,8 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-
-import { SharedModule } from "@shared/shared.module";
-import { MoviesRoutingModule } from "@pages/movies/movies-routing.module";
+import { NgModule } from "@angular/core";
 import { MoviesFacade } from "@pages/movies/movies.facade";
+import { MoviesRoutingModule } from "@pages/movies/movies-routing.module";
+import { SharedModule } from "@shared/shared.module";
 
 @NgModule({
     declarations: [

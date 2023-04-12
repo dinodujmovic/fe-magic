@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-
 import { CarouselItemComponent } from "@pages/movies/components/carousel-item/carousel-item.component";
 import { CarouselSectionComponent } from "@pages/movies/components/carousel-section/carousel-section.component";
 import { MovieCardComponent } from "@pages/movies/components/movie-card/movie-card.component";

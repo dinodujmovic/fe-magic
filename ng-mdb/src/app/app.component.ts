@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
+import { IAppState } from "@core/store/IAppState";
 import { Select } from "@ngxs/store";
 import { Observable } from "rxjs";
-import { IAppState } from "@core/store/IAppState";
 
 @Component({
     selector: "mdb-root",

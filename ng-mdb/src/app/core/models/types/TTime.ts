@@ -1,1 +1,1 @@
-export type TTime = "day" | "week"
+export type TTime = "day" | "week";

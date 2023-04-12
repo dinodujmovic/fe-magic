@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-
-import { SettingsFacade } from "@pages/settings/settings.facade";
-import { By } from "@angular/platform-browser";
 import { ReactiveFormsModule } from "@angular/forms";
+import { By } from "@angular/platform-browser";
+import { SettingsFacade } from "@pages/settings/settings.facade";
+
 import { SettingsComponent } from "./settings.component";
 
 describe("SettingsComponent", () => {
