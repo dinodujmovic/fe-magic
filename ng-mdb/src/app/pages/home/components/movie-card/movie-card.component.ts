@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 
 /*
   Movie Card Component
-  Shared across multiple modules like HomeModule, MovieModule.
+  Shared across multiple shell like HomeModule, MovieModule.
 */
 @Component({
     selector: "mdb-movie-card",

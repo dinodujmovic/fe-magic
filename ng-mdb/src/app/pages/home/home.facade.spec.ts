@@ -1,10 +1,10 @@
 import { TestBed } from "@angular/core/testing";
 import { NgxsModule, Store } from "@ngxs/store";
-import { MoviesFacade } from "@pages/movies/movies.facade";
-import { GetNowPlayingMovies, GetTrendingMovies } from "@store/movies/movies.action";
+import { HomeFacade } from "@pages/home/home.facade";
+import { GetNowPlayingMovies, GetTrendingMovies } from "@store/home/home.action";
 
-describe("MovieFacade", () => {
-    let service: MoviesFacade;
+describe("HomeFacade", () => {
+    let service: HomeFacade;
     let mockStore: jasmine.SpyObj<Store>;
 
     beforeEach(() => {
@@ -18,12 +18,12 @@ describe("MovieFacade", () => {
         TestBed.configureTestingModule({
             imports: [NgxsModule.forRoot()],
             providers: [
-                MoviesFacade,
+                HomeFacade,
                 { provide: Store, useValue: mockStore }
             ]
         });
 
-        service = TestBed.inject(MoviesFacade);
+        service = TestBed.inject(HomeFacade);
     });
 
     it("should be created", () => {

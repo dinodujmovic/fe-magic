@@ -1,30 +1,19 @@
 import { Component } from "@angular/core";
-import { TTime } from "@core/models/types/TTime";
-import { MoviesFacade } from "@pages/movies/movies.facade";
-import { NowPlayingMoviesStateModel, TrendingMoviesStateModel } from "@store/movies/movies.state";
-import { Observable } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-    templateUrl: "./movies.component.html",
+    template: `
+        <div class="mdb-movies container mx-auto mt-20">
+            <h1>{{ title }}</h1>
+        </div>
+    `,
 })
 export class MoviesComponent {
-    trendingMoviesTime = "day";
-    trendingMovies$: Observable<TrendingMoviesStateModel>;
-    nowPlayingMovies$: Observable<NowPlayingMoviesStateModel>;
+    title = "";
 
-    constructor(private moviesFacade: MoviesFacade) {
-        this.moviesFacade.loadHomePage();
+    constructor(private route: ActivatedRoute) {
+        const id = this.route.snapshot.paramMap.get("id");
 
-        this.trendingMovies$ = this.moviesFacade.getTrendingMovies$();
-        this.nowPlayingMovies$ = this.moviesFacade.getNowPlayingMovies$();
-    }
-
-    getTrendingMovies(time: TTime) {
-        if (this.trendingMoviesTime === time) {
-            return;
-        }
-
-        this.trendingMoviesTime = time;
-        this.moviesFacade.loadTrendingMovies(time);
+        this.title = `${id}`.toUpperCase();
     }
 }

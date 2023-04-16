@@ -48,6 +48,15 @@ export class MovieService {
         );
     }
 
+    getPopularMovies(): Observable<IApiResponse<IMovieResponse[]>> {
+        const url = wrapAPI("movie/popular", { language: "en-US", region: "us" });
+
+        return this.http.get<IApiResponse<IMovieResponse[]>>(url).pipe(
+            map(this.mapPosterPath),
+            catchError(this.handleError)
+        );
+    }
+
     getNowPlayingMovies(): Observable<IApiResponse<IMovieResponse[]>> {
         const url = wrapAPI("movie/now_playing", { language: "en-US", region: "us" });
 

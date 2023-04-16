@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { ToasterService } from "@core/modules/toaster/toaster.service";
+import { ToasterService } from "@core/shell/toaster/toaster.service";
 import { Store } from "@ngxs/store";
 import { IAppState } from "@store/IAppState";
 import { SettingsPayload, UpdateSettings } from "@store/settings/settings.action";
-import { SettingsStateModel } from "@store/settings/settings.state";
+import { ISettingsState } from "@store/settings/settings.state";
 import { take } from "rxjs";
 
 @Injectable()
@@ -11,8 +11,8 @@ export class SettingsFacade {
     constructor(private store: Store, private toasterService: ToasterService) {
     }
 
-    getSettings(): SettingsStateModel {
-        return this.store.selectSnapshot<SettingsStateModel>((state: IAppState) => state.settings);
+    getSettings(): ISettingsState {
+        return this.store.selectSnapshot<ISettingsState>((state: IAppState) => state.settings);
     }
 
     updateSettings(settings: SettingsPayload) {

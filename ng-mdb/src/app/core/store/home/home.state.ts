@@ -2,62 +2,38 @@ import { Injectable } from "@angular/core";
 import { IApiResponse, IMovieResponse } from "@core/models";
 import { MovieService } from "@core/services/movie.service";
 import { Action, State, StateContext } from "@ngxs/store";
-import { GetNowPlayingMovies, GetTrendingMovies } from "@store/movies/movies.action";
+import { GetNowPlayingMovies, GetTrendingMovies } from "@store/home/home.action";
+import { IMoviesDataState } from "@store/home/home.model";
 import { tap } from "rxjs";
 
-export interface TrendingMoviesStateModel {
-    data: IMovieResponse[];
-    loading: boolean;
-    error: any;
-    page: number,
-    totalPages: number,
-    totalResults: number
+const initMoviesDataState = (): IMoviesDataState => ({
+    data: [],
+    loading: false,
+    error: undefined,
+    page: 0,
+    totalPages: 0,
+    totalResults: 0
+});
+
+export interface IHomeState {
+    trendingMovies: IMoviesDataState;
+    nowPlayingMovies: IMoviesDataState;
 }
 
-export interface NowPlayingMoviesStateModel {
-    data: IMovieResponse[];
-    loading: boolean;
-    error: any;
-    page: number,
-    totalPages: number,
-    totalResults: number
-}
-
-export interface MoviesStateModel {
-    selectedMovie: any;
-    trendingMovies: TrendingMoviesStateModel;
-    nowPlayingMovies: NowPlayingMoviesStateModel;
-}
-
-@State<MoviesStateModel>({
-    name: "movies",
+@State<IHomeState>({
+    name: "home",
     defaults: {
-        selectedMovie: {},
-        trendingMovies: {
-            data: [],
-            loading: false,
-            error: undefined,
-            page: 0,
-            totalPages: 0,
-            totalResults: 0
-        },
-        nowPlayingMovies: {
-            data: [],
-            loading: false,
-            error: undefined,
-            page: 0,
-            totalPages: 0,
-            totalResults: 0
-        }
+        trendingMovies: initMoviesDataState(),
+        nowPlayingMovies: initMoviesDataState()
     }
 })
 
 @Injectable()
-export class MovieState {
+export class HomeState {
     constructor(private movieService: MovieService) { }
 
     @Action(GetTrendingMovies)
-    getTrendingMovies(ctx: StateContext<MoviesStateModel>, action: GetTrendingMovies) {
+    getTrendingMovies(ctx: StateContext<IHomeState>, action: GetTrendingMovies) {
         const state = ctx.getState();
 
         ctx.patchState({
@@ -95,7 +71,7 @@ export class MovieState {
     }
 
     @Action(GetNowPlayingMovies)
-    getNowPlayingMovies(ctx: StateContext<MoviesStateModel>) {
+    getNowPlayingMovies(ctx: StateContext<IHomeState>) {
         const state = ctx.getState();
 
         ctx.patchState({

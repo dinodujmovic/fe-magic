@@ -1,7 +1,7 @@
-import { MoviesStateModel } from "@store/movies/movies.state";
-import { SettingsStateModel } from "@store/settings/settings.state";
+import { IHomeState } from "@store/home/home.state";
+import { ISettingsState } from "@store/settings/settings.state";
 
 export interface IAppState {
-    movies: MoviesStateModel
-    settings: SettingsStateModel
+    home: IHomeState
+    settings: ISettingsState
 }

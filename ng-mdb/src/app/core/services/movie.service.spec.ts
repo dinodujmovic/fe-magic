@@ -28,7 +28,7 @@ describe("MovieService", () => {
         expect(service).toBeTruthy();
     });
 
-    it("Should return movies with correct poster path", () => {
+    it("Should return home with correct poster path", () => {
         const result = {
             id: 1, title: "Movie 1", name: "Movie 1", poster_path: "image.jpg", overview: "", release_date: "", vote_average: 1
         };
@@ -78,6 +78,17 @@ describe("MovieService", () => {
             const url = getUrl(time);
 
             service.getTrendingMovies(time).subscribe();
+
+            const request = httpTestingController.expectOne(url);
+            expect(request.request.method).toBe("GET");
+        });
+    });
+
+    describe("getPopularMovies", () => {
+        it("should call get with correct URL", () => {
+            const url = `${environment.moviesAPI}/movie/popular?language=en-US&region=us`;
+
+            service.getPopularMovies().subscribe();
 
             const request = httpTestingController.expectOne(url);
             expect(request.request.method).toBe("GET");

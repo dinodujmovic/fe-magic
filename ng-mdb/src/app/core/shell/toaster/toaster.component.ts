@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { ToasterService, ToastMessageType } from "@core/modules/toaster/toaster.service";
+import { ToasterService, ToastMessageType } from "@core/shell/toaster/toaster.service";
 import { LoggerService } from "@core/services/logger.service";
 
 class Toast {
