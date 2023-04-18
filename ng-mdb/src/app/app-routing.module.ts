@@ -19,9 +19,14 @@ const routes: Routes = [
         loadChildren: () => import("@pages/movies/movies.module").then((m) => m.MoviesModule)
     },
     {
+        path: "movie/:id",
+        data: { preload: false },
+        loadChildren: () => import("@pages/movie/movie.module").then((m) => m.MovieModule)
+    },
+    {
         path: "settings",
         data: { preload: false },
-        loadChildren: () => import("./pages/settings/settings.module").then((m) => m.SettingsModule)
+        loadChildren: () => import("@pages/settings/settings.module").then((m) => m.SettingsModule)
     },
     { path: "**", redirectTo: "/" },
 ];

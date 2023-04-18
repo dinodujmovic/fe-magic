@@ -1,5 +1,6 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { NgModule, Optional, SkipSelf } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 import { EnsureModuleLoadedOnceGuard } from "@core/guards/ensure-module-loaded-once.guard";
 import { MovieInterceptor } from "@core/interceptors/movie.interceptor";
 import { LayoutModule } from "@core/shell/layout/layout.module";
@@ -30,6 +31,7 @@ import { SettingsState } from "@store/settings/settings.state";
         ...environment.plugins
     ],
     exports: [
+        BrowserModule,
         LayoutModule,
         ToasterModule,
     ],
