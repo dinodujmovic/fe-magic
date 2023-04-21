@@ -10,8 +10,7 @@ import { HeaderComponent } from "@core/shell/layout/header/header.component";
     exports: [HeaderComponent, FooterComponent],
     declarations: [HeaderComponent, FooterComponent]
 })
-export class LayoutModule extends EnsureModuleLoadedOnceGuard { // Ensure that GrowlerModule is only loaded into AppModule
-    // Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
+export class LayoutModule extends EnsureModuleLoadedOnceGuard {
     constructor(@Optional() @SkipSelf() parentModule: LayoutModule) {
         super(parentModule);
     }
