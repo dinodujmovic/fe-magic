@@ -29,7 +29,6 @@ describe("HeroComponent", () => {
 
         fixture = TestBed.createComponent(ContentProjectionTesterComponent);
         component = fixture.componentInstance;
-        component.title = TITLE;
         component.background = IMAGE_URL;
         fixture.detectChanges();
     });
@@ -38,13 +37,11 @@ describe("HeroComponent", () => {
         expect(component).toBeTruthy();
     });
 
-    it("should pass correct title and url", () => {
+    it("should pass correct url", () => {
         const heroEl = fixture.debugElement.query(By.css(".mdb-hero")).nativeElement;
-        const heroTitleEl = fixture.debugElement.query(By.css(".mdb-hero__title")).nativeElement;
         const heroContentEl = fixture.debugElement.query(By.css(".mdb-hero__content")).nativeElement;
 
         expect(heroEl.style.backgroundImage).toEqual(`url("${IMAGE_URL}")`);
-        expect(heroTitleEl.textContent.trim()).toEqual(TITLE);
         expect(heroContentEl.textContent.trim()).toEqual("Some content");
     });
 });

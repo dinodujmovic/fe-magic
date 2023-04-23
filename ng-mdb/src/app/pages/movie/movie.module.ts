@@ -1,5 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { MovieResolver } from "@pages/movie/resolvers/movie.resolver";
+import { SharedModule } from "@shared/shared.module";
 
 import { MovieRoutingModule } from "./movie-routing.module";
 
@@ -9,7 +11,11 @@ import { MovieRoutingModule } from "./movie-routing.module";
     ],
     imports: [
         CommonModule,
-        MovieRoutingModule
+        MovieRoutingModule,
+        SharedModule
+    ],
+    providers: [
+        MovieResolver
     ]
 })
 export class MovieModule { }

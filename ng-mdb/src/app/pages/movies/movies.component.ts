@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { ManualSubs } from "@core/helpers/manual-subs";
 
 @Component({
     template: `
@@ -8,12 +9,21 @@ import { ActivatedRoute } from "@angular/router";
         </div>
     `,
 })
-export class MoviesComponent {
+export class MoviesComponent implements OnDestroy {
+    subs = new ManualSubs();
     title = "";
 
     constructor(private route: ActivatedRoute) {
-        const id = this.route.snapshot.paramMap.get("id");
+        // const id = this.route.snapshot.paramMap.get("id");
 
-        this.title = `${id}`.toUpperCase();
+        this.subs.add = this.route.paramMap.subscribe((params) => {
+            const id = params.get("id");
+
+            this.title = `${id}`.toUpperCase();
+        });
+    }
+
+    ngOnDestroy() {
+        this.subs.unsubscribe();
     }
 }

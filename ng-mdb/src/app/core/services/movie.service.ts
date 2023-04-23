@@ -6,7 +6,7 @@ import {
 import { TTime } from "@core/models/types/TTime";
 import { environment } from "@environment/environment";
 import {
-    catchError, map, Observable, of
+    catchError, map, Observable, throwError
 } from "rxjs";
 
 const wrapAPI = (url: string, params?: any) => {
@@ -70,6 +70,15 @@ export class MovieService {
         const url = wrapAPI(`movie/${id}`);
 
         return this.http.get<IMoveDetailsResponse>(url).pipe(
+            map((m) => {
+                const movie = {
+                    ...m,
+                    backdrop_path: `${environment.assetsAPI}/w1920_and_h800_multi_faces/${m.poster_path}`,
+                    poster_path: `${environment.assetsAPI}/w400/${m.poster_path}`,
+                };
+
+                return movie;
+            }),
             catchError(this.handleError)
         );
     }
@@ -79,7 +88,7 @@ export class MovieService {
             const results = response.results.map((movie: IMovieResponse) => ({
                 ...movie,
                 title: movie.title || movie.name,
-                poster_path: `${environment.assetsAPI}/w300/${movie.poster_path}`
+                poster_path: `${environment.assetsAPI}/w300/${movie.poster_path}`,
             }));
 
             return {
@@ -93,6 +102,6 @@ export class MovieService {
     private handleError(error: HttpErrorResponse): Observable<IErrorResponse> {
         const apiError = error.error as IErrorResponse;
 
-        return of(apiError);
+        return throwError(() => apiError);
     }
 }
