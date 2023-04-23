@@ -20,7 +20,7 @@ const routes: Routes = [
     },
     {
         path: "movie/:id",
-        data: { preload: false },
+        data: { preload: true },
         loadChildren: () => import("@pages/movie/movie.module").then((m) => m.MovieModule)
     },
     {

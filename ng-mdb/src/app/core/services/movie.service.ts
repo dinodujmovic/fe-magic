@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import {
-    IApiResponse, IErrorResponse, IMoveDetailsResponse, IMovieResponse
+    IErrorResponse, IMoveDetailsResponse, IMovieResponse, IPaginationResponse
 } from "@core/models";
 import { TTime } from "@core/models/types/TTime";
 import { environment } from "@environment/environment";
@@ -28,45 +28,43 @@ export class MovieService {
     constructor(private http: HttpClient) {
     }
 
-    searchMovies(query: string): Observable<IApiResponse<IMovieResponse[]>> {
+    searchMovies(query: string): Observable<IPaginationResponse<IMovieResponse[]>> {
         const url = wrapAPI("search/movie", {
             query, language: "en-US", region: "us", include_adult: false
         });
 
-        return this.http.get<IApiResponse<IMovieResponse[]>>(url)
-            .pipe(
-                catchError(this.handleError)
-            );
+        return this.http.get<IPaginationResponse<IMovieResponse[]>>(url)
+            .pipe(catchError(this.handleError));
     }
 
-    getTrendingMovies(time: TTime = "day"): Observable<IApiResponse<IMovieResponse[]>> {
+    getTrendingMovies(time: TTime = "day"): Observable<IPaginationResponse<IMovieResponse[]>> {
         const url = wrapAPI(`trending/all/${time}`, { language: "en-US", region: "us" });
 
-        return this.http.get<IApiResponse<IMovieResponse[]>>(url).pipe(
+        return this.http.get<IPaginationResponse<IMovieResponse[]>>(url).pipe(
             map(this.mapPosterPath),
             catchError(this.handleError)
         );
     }
 
-    getPopularMovies(): Observable<IApiResponse<IMovieResponse[]>> {
+    getPopularMovies(): Observable<IPaginationResponse<IMovieResponse[]>> {
         const url = wrapAPI("movie/popular", { language: "en-US", region: "us" });
 
-        return this.http.get<IApiResponse<IMovieResponse[]>>(url).pipe(
+        return this.http.get<IPaginationResponse<IMovieResponse[]>>(url).pipe(
             map(this.mapPosterPath),
             catchError(this.handleError)
         );
     }
 
-    getNowPlayingMovies(): Observable<IApiResponse<IMovieResponse[]>> {
+    getNowPlayingMovies(): Observable<IPaginationResponse<IMovieResponse[]>> {
         const url = wrapAPI("movie/now_playing", { language: "en-US", region: "us" });
 
-        return this.http.get<IApiResponse<IMovieResponse[]>>(url).pipe(
+        return this.http.get<IPaginationResponse<IMovieResponse[]>>(url).pipe(
             map(this.mapPosterPath),
             catchError(this.handleError)
         );
     }
 
-    getMovieDetails(id: string): Observable<IMoveDetailsResponse | IErrorResponse> {
+    getMovieDetails(id: string): Observable<IMoveDetailsResponse> {
         const url = wrapAPI(`movie/${id}`);
 
         return this.http.get<IMoveDetailsResponse>(url).pipe(
@@ -83,7 +81,7 @@ export class MovieService {
         );
     }
 
-    private mapPosterPath(response: IApiResponse<IMovieResponse[]>): IApiResponse<IMovieResponse[]> {
+    private mapPosterPath(response: IPaginationResponse<IMovieResponse[]>): IPaginationResponse<IMovieResponse[]> {
         if ("results" in response) {
             const results = response.results.map((movie: IMovieResponse) => ({
                 ...movie,
@@ -99,7 +97,7 @@ export class MovieService {
         return response;
     }
 
-    private handleError(error: HttpErrorResponse): Observable<IErrorResponse> {
+    private handleError(error: HttpErrorResponse): Observable<never> {
         const apiError = error.error as IErrorResponse;
 
         return throwError(() => apiError);

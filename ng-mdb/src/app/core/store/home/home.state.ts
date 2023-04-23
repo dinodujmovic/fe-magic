@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import { IApiResponse, IMovieResponse } from "@core/models";
+import { IErrorResponse, IMovieResponse, IPaginationResponse } from "@core/models";
 import { MovieService } from "@core/services/movie.service";
 import { Action, State, StateContext } from "@ngxs/store";
 import { GetNowPlayingMovies, GetTrendingMovies } from "@store/home/home.action";
 import { IMoviesDataState } from "@store/home/home.model";
-import { tap } from "rxjs";
+import { catchError, tap, throwError } from "rxjs";
 
 const initMoviesDataState = (): IMoviesDataState => ({
     data: [],
@@ -45,27 +45,28 @@ export class HomeState {
         });
 
         return this.movieService.getTrendingMovies(action.time).pipe(
-            tap((response: IApiResponse<IMovieResponse[]>) => {
-                if ("results" in response) {
-                    ctx.patchState({
-                        trendingMovies: {
-                            data: response.results,
-                            page: response.page,
-                            totalPages: response.total_pages,
-                            totalResults: response.total_results,
-                            loading: false,
-                            error: undefined
-                        }
-                    });
-                } else {
-                    ctx.patchState({
-                        trendingMovies: {
-                            ...state.trendingMovies,
-                            loading: false,
-                            error: response.status_message,
-                        }
-                    });
-                }
+            tap((response: IPaginationResponse<IMovieResponse[]>) => {
+                ctx.patchState({
+                    trendingMovies: {
+                        data: response.results,
+                        page: response.page,
+                        totalPages: response.total_pages,
+                        totalResults: response.total_results,
+                        loading: false,
+                        error: undefined
+                    }
+                });
+            }),
+            catchError((error: IErrorResponse) => {
+                ctx.patchState({
+                    trendingMovies: {
+                        ...state.trendingMovies,
+                        loading: false,
+                        error: error.status_message,
+                    }
+                });
+
+                return throwError(() => error);
             })
         );
     }
@@ -83,27 +84,28 @@ export class HomeState {
         });
 
         return this.movieService.getNowPlayingMovies().pipe(
-            tap((response: IApiResponse<IMovieResponse[]>) => {
-                if ("results" in response) {
-                    ctx.patchState({
-                        nowPlayingMovies: {
-                            data: response.results,
-                            page: response.page,
-                            totalPages: response.total_pages,
-                            totalResults: response.total_results,
-                            loading: false,
-                            error: undefined
-                        }
-                    });
-                } else {
-                    ctx.patchState({
-                        nowPlayingMovies: {
-                            ...state.nowPlayingMovies,
-                            loading: false,
-                            error: response.status_message,
-                        }
-                    });
-                }
+            tap((response: IPaginationResponse<IMovieResponse[]>) => {
+                ctx.patchState({
+                    nowPlayingMovies: {
+                        data: response.results,
+                        page: response.page,
+                        totalPages: response.total_pages,
+                        totalResults: response.total_results,
+                        loading: false,
+                        error: undefined
+                    }
+                });
+            }),
+            catchError((error: IErrorResponse) => {
+                ctx.patchState({
+                    nowPlayingMovies: {
+                        ...state.nowPlayingMovies,
+                        loading: false,
+                        error: error.status_message,
+                    }
+                });
+
+                return throwError(() => error);
             })
         );
     }

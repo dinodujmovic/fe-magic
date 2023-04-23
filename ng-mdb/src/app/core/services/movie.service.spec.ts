@@ -1,6 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
-import { IApiResponse, IMovieResponse } from "@core/models";
+import { IErrorResponse, IMovieResponse } from "@core/models";
 import { TTime } from "@core/models/types/TTime";
 import { environment } from "@environment/environment";
 
@@ -32,7 +32,7 @@ describe("MovieService", () => {
         const result = {
             id: 1, title: "Movie 1", name: "Movie 1", poster_path: "image.jpg", overview: "", release_date: "", vote_average: 1
         };
-        const mockResponse: IApiResponse<IMovieResponse[]> = {
+        const mockResponse: IErrorResponse<IMovieResponse[]> = {
             results: [
                 result
             ],
@@ -42,7 +42,7 @@ describe("MovieService", () => {
         };
 
         service.getTrendingMovies().subscribe((response) => {
-            const expectedResponse: IApiResponse<IMovieResponse[]> = {
+            const expectedResponse: IErrorResponse<IMovieResponse[]> = {
                 results: [{
                     ...result,
                     poster_path: `${environment.assetsAPI}/w300/image.jpg`

@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import {
     ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot
 } from "@angular/router";
-import { IErrorResponse } from "@core/models";
 import { MovieService } from "@core/services/movie.service";
 import { ToasterService } from "@core/shell/toaster/toaster.service";
 import { lastValueFrom } from "rxjs";
