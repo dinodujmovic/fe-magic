@@ -9,7 +9,7 @@ const routes: Routes = [
         component: MoviesComponent,
     },
     {
-        path: ":id",
+        path: ":type",
         component: MoviesComponent,
         canActivate: [MoviesGuard]
     },

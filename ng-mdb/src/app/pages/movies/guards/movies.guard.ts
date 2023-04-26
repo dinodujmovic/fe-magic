@@ -15,9 +15,9 @@ export class MoviesGuard implements CanActivate {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): boolean {
-        const { id } = next.params;
+        const { type } = next.params;
 
-        if (!isValidRoute(id)) {
+        if (!isValidRoute(type)) {
             this.router.navigate(["/movies"]);
 
             return false;

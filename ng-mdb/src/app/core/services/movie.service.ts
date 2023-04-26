@@ -46,8 +46,8 @@ export class MovieService {
         );
     }
 
-    getPopularMovies(): Observable<IPaginationResponse<IMovieResponse[]>> {
-        const url = wrapAPI("movie/popular", { language: "en-US", region: "us" });
+    getPopularMovies(page = 1): Observable<IPaginationResponse<IMovieResponse[]>> {
+        const url = wrapAPI("movie/popular", { language: "en-US", region: "us", page });
 
         return this.http.get<IPaginationResponse<IMovieResponse[]>>(url).pipe(
             map(this.mapPosterPath),
@@ -55,8 +55,17 @@ export class MovieService {
         );
     }
 
-    getNowPlayingMovies(): Observable<IPaginationResponse<IMovieResponse[]>> {
-        const url = wrapAPI("movie/now_playing", { language: "en-US", region: "us" });
+    getNowPlayingMovies(page = 1): Observable<IPaginationResponse<IMovieResponse[]>> {
+        const url = wrapAPI("movie/now_playing", { language: "en-US", region: "us", page });
+
+        return this.http.get<IPaginationResponse<IMovieResponse[]>>(url).pipe(
+            map(this.mapPosterPath),
+            catchError(this.handleError)
+        );
+    }
+
+    getUpcomingMovies(page = 1) :Observable<IPaginationResponse<IMovieResponse[]>> {
+        const url = wrapAPI("movie/upcoming", { language: "en-US", region: "us", page });
 
         return this.http.get<IPaginationResponse<IMovieResponse[]>>(url).pipe(
             map(this.mapPosterPath),

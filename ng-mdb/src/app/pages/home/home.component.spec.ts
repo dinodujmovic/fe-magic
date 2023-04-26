@@ -5,7 +5,7 @@ import { NOW_PLAYING_MOVIES_STATE_MODEL_MOCK } from "@mocks/NowPlayingMoviesStat
 import { TRENDING_MOVIES_STATE_MODEL_MOCK } from "@mocks/TrendingMoviesStateModelMock";
 import { CarouselItemComponent } from "@pages/home/components/carousel-item/carousel-item.component";
 import { CarouselSectionComponent } from "@pages/home/components/carousel-section/carousel-section.component";
-import { MovieCardComponent } from "@pages/home/components/movie-card/movie-card.component";
+import { MovieCardComponent } from "@shared/components/movie-card/movie-card.component";
 import { HomeFacade } from "@pages/home/home.facade";
 import { SharedModule } from "@shared/shared.module";
 import { of } from "rxjs";
