@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import {
-    IErrorResponse, IMoveDetailsResponse, IMovieResponse, IPaginationResponse
+    IErrorResponse, IMovieDetailsResponse, IMovieResponse, IPaginationResponse
 } from "@core/models";
 import { TTime } from "@core/models/types/TTime";
 import { environment } from "@environment/environment";
@@ -9,6 +9,7 @@ import {
     catchError, map, Observable, throwError
 } from "rxjs";
 
+const imgBackfall = "/assets/no-image.png";
 const wrapAPI = (url: string, params?: any) => {
     const newUrl = new URL(`${environment.moviesAPI}/${url}`);
 
@@ -20,6 +21,12 @@ const wrapAPI = (url: string, params?: any) => {
 
     return newUrl.toString();
 };
+
+const mapBackdropAndPosterPath = (movie: IMovieResponse | IMovieDetailsResponse) => ({
+    backdrop_path: movie.backdrop_path
+        ? `${environment.assetsAPI}/original/${movie.backdrop_path}` : imgBackfall,
+    poster_path: movie.poster_path ? `${environment.assetsAPI}/w300/${movie.poster_path}` : imgBackfall,
+});
 
 @Injectable({
     providedIn: "root"
@@ -41,7 +48,7 @@ export class MovieService {
         const url = wrapAPI(`trending/all/${time}`, { language: "en-US", region: "us" });
 
         return this.http.get<IPaginationResponse<IMovieResponse[]>>(url).pipe(
-            map(this.mapPosterPath),
+            map(this.mapMoviesPosterAndBackdropPaths),
             catchError(this.handleError)
         );
     }
@@ -50,7 +57,7 @@ export class MovieService {
         const url = wrapAPI("movie/popular", { language: "en-US", region: "us", page });
 
         return this.http.get<IPaginationResponse<IMovieResponse[]>>(url).pipe(
-            map(this.mapPosterPath),
+            map(this.mapMoviesPosterAndBackdropPaths),
             catchError(this.handleError)
         );
     }
@@ -59,7 +66,7 @@ export class MovieService {
         const url = wrapAPI("movie/now_playing", { language: "en-US", region: "us", page });
 
         return this.http.get<IPaginationResponse<IMovieResponse[]>>(url).pipe(
-            map(this.mapPosterPath),
+            map(this.mapMoviesPosterAndBackdropPaths),
             catchError(this.handleError)
         );
     }
@@ -68,42 +75,34 @@ export class MovieService {
         const url = wrapAPI("movie/upcoming", { language: "en-US", region: "us", page });
 
         return this.http.get<IPaginationResponse<IMovieResponse[]>>(url).pipe(
-            map(this.mapPosterPath),
+            map(this.mapMoviesPosterAndBackdropPaths),
             catchError(this.handleError)
         );
     }
 
-    getMovieDetails(id: string): Observable<IMoveDetailsResponse> {
+    getMovieDetails(id: string): Observable<IMovieDetailsResponse> {
         const url = wrapAPI(`movie/${id}`);
 
-        return this.http.get<IMoveDetailsResponse>(url).pipe(
-            map((m) => {
-                const movie = {
-                    ...m,
-                    backdrop_path: `${environment.assetsAPI}/w1920_and_h800_multi_faces/${m.poster_path}`,
-                    poster_path: `${environment.assetsAPI}/w400/${m.poster_path}`,
-                };
-
-                return movie;
-            }),
+        return this.http.get<IMovieDetailsResponse>(url).pipe(
+            map((movie) => ({
+                ...movie,
+                ...mapBackdropAndPosterPath(movie)
+            })),
             catchError(this.handleError)
         );
     }
 
-    private mapPosterPath(response: IPaginationResponse<IMovieResponse[]>): IPaginationResponse<IMovieResponse[]> {
-        if ("results" in response) {
-            const results = response.results.map((movie: IMovieResponse) => ({
-                ...movie,
-                title: movie.title || movie.name,
-                poster_path: `${environment.assetsAPI}/w300/${movie.poster_path}`,
-            }));
+    private mapMoviesPosterAndBackdropPaths(response: IPaginationResponse<IMovieResponse[]>): IPaginationResponse<IMovieResponse[]> {
+        const results = response.results.map((movie: IMovieResponse) => ({
+            ...movie,
+            title: movie.title || movie.name,
+            ...mapBackdropAndPosterPath(movie)
+        }));
 
-            return {
-                ...response,
-                results
-            };
-        }
-        return response;
+        return {
+            ...response,
+            results
+        };
     }
 
     private handleError(error: HttpErrorResponse): Observable<never> {

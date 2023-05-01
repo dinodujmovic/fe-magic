@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { ToasterService } from "@core/shell/toaster/toaster.service";
 import { Store } from "@ngxs/store";
 import { IAppState } from "@store/IAppState";
-import { SettingsPayload, UpdateSettings } from "@store/settings/settings.action";
-import { ISettingsState } from "@store/settings/settings.state";
+import { UpdateSettings } from "@store/settings/settings.action";
+import { ISettingsState, SettingsPayload } from "@store/settings/settings.model";
 import { take } from "rxjs";
 
 @Injectable()

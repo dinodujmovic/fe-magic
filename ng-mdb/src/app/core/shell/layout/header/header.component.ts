@@ -3,13 +3,13 @@ import { ManualSubs } from "@core/helpers/manual-subs";
 import { Store } from "@ngxs/store";
 import { IAppState } from "@store/IAppState";
 import { UpdateSettings } from "@store/settings/settings.action";
-import { ISettingsState } from "@store/settings/settings.state";
+import { ISettingsState } from "@store/settings/settings.model";
 import { take } from "rxjs";
 
 @Component({
     selector: "mdb-header",
     template: `
-        <div class="container mx-auto navbar bg-base-100">
+        <div class="mdb-header container mx-auto navbar bg-base-100">
             <div class="flex-1">
                 <a class="btn btn-ghost normal-case text-xl underline underline-offset-4 border-primary" [routerLink]="'/'">TMDB</a>
 
@@ -46,16 +46,17 @@ import { take } from "rxjs";
                         </svg>
                     </div>
 
-                    <div class="dropdown-content
-                            bg-base-200
-                            text-base-content rounded-t-box rounded-b-box top-px
-                            max-h-96 h-[70vh] w-52 overflow-y-auto shadow-2xl mt-16">
+                    <div class="mdb-header__theme-select
+                                dropdown-content
+                                bg-base-200
+                                text-base-content rounded-t-box rounded-b-box top-px
+                                max-h-96 h-[70vh] w-52 overflow-y-auto shadow-2xl mt-16">
                         <div class="grid grid-cols-1 gap-3 p-3" tabindex="0">
                             <button *ngFor="let theme of settings.themes"
                                     (click)="setTheme(theme)"
-                                    class="outline-base-content overflow-hidden rounded-lg text-left">
+                                    class="mdb-header__theme-select-item outline-base-content overflow-hidden rounded-lg text-left">
 
-                                <div attr.data-theme={{theme}}
+                                <div [attr.data-theme]="theme"
                                      class="bg-base-100 text-base-content w-full cursor-pointer font-sans">
                                     <div class="grid grid-cols-5 grid-rows-3">
                                         <div class="col-span-5 row-span-3 row-start-1 flex gap-2 py-3 px-4 items-center">
@@ -108,6 +109,10 @@ export class HeaderComponent implements OnDestroy {
             });
     }
 
+    ngOnDestroy() {
+        this.subs.unsubscribe();
+    }
+
     setTheme(theme: string) {
         if (theme === this.settings.theme) {
             return;
@@ -120,9 +125,5 @@ export class HeaderComponent implements OnDestroy {
 
         this.store.dispatch(new UpdateSettings(settings))
             .pipe(take(1));
-    }
-
-    ngOnDestroy() {
-        this.subs.unsubscribe();
     }
 }

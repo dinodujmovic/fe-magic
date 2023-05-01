@@ -1,6 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
-import { IErrorResponse, IMovieResponse } from "@core/models";
+import { IMovieResponse, IPaginationResponse } from "@core/models";
 import { TTime } from "@core/models/types/TTime";
 import { environment } from "@environment/environment";
 
@@ -30,9 +30,16 @@ describe("MovieService", () => {
 
     it("Should return home with correct poster path", () => {
         const result = {
-            id: 1, title: "Movie 1", name: "Movie 1", poster_path: "image.jpg", overview: "", release_date: "", vote_average: 1
+            id: 1,
+            title: "Movie 1",
+            name: "Movie 1",
+            poster_path: "image.jpg",
+            backdrop_path: "image.jpg",
+            overview: "",
+            release_date: "",
+            vote_average: 1
         };
-        const mockResponse: IErrorResponse<IMovieResponse[]> = {
+        const mockResponse: IPaginationResponse<IMovieResponse[]> = {
             results: [
                 result
             ],
@@ -42,10 +49,11 @@ describe("MovieService", () => {
         };
 
         service.getTrendingMovies().subscribe((response) => {
-            const expectedResponse: IErrorResponse<IMovieResponse[]> = {
+            const expectedResponse: IPaginationResponse<IMovieResponse[]> = {
                 results: [{
                     ...result,
-                    poster_path: `${environment.assetsAPI}/w300/image.jpg`
+                    poster_path: `${environment.assetsAPI}/w300/image.jpg`,
+                    backdrop_path: `${environment.assetsAPI}/original/image.jpg`
                 }],
                 total_pages: 1,
                 total_results: 1,
@@ -86,7 +94,7 @@ describe("MovieService", () => {
 
     describe("getPopularMovies", () => {
         it("should call get with correct URL", () => {
-            const url = `${environment.moviesAPI}/movie/popular?language=en-US&region=us`;
+            const url = `${environment.moviesAPI}/movie/popular?language=en-US&region=us&page=1`;
 
             service.getPopularMovies().subscribe();
 
@@ -97,7 +105,7 @@ describe("MovieService", () => {
 
     describe("getNowPlayingMovies", () => {
         it("should call get with correct URL", () => {
-            const url = `${environment.moviesAPI}/movie/now_playing?language=en-US&region=us`;
+            const url = `${environment.moviesAPI}/movie/now_playing?language=en-US&region=us&page=1`;
 
             service.getNowPlayingMovies().subscribe();
 

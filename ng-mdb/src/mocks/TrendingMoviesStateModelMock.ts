@@ -14,6 +14,7 @@ const MOVIES = [
         release_date: "20 Jan 2023",
         overview: "Avatar movie",
         poster_path: "/path",
+        backdrop_path: "/backdrop_path",
         vote_average: 5.5,
     },
     {
@@ -23,6 +24,7 @@ const MOVIES = [
         release_date: "20 Jan 2020",
         overview: "John Wick 4 movie",
         poster_path: "/path",
+        backdrop_path: "/backdrop_path",
         vote_average: 5.5,
     }
 ];

@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { TTime } from "@core/models/types/TTime";
 import { Select, Store } from "@ngxs/store";
 import { GetNowPlayingMovies, GetTrendingMovies } from "@store/home/home.action";
-import { IMoviesDataState } from "@store/home/home.model";
 import { IAppState } from "@store/IAppState";
+import { IMoviesDataState } from "@store/movies/movies.model";
 import { concat, Observable } from "rxjs";
 
 @Injectable()

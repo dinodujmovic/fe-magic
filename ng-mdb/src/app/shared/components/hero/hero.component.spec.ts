@@ -19,7 +19,6 @@ describe("HeroComponent", () => {
     let component: ContentProjectionTesterComponent;
     let fixture: ComponentFixture<ContentProjectionTesterComponent>;
 
-    const TITLE = "Welcome";
     const IMAGE_URL = "image.jpg";
 
     beforeEach(async () => {

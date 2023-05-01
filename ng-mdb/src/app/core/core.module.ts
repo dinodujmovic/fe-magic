@@ -10,6 +10,7 @@ import { environment } from "@environment/environment";
 import { LOCAL_STORAGE_ENGINE, NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 import { NgxsModule } from "@ngxs/store";
 import { HomeState } from "@store/home/home.state";
+import { MoviesState } from "@store/movies/movies.state";
 import { SettingsState } from "@store/settings/settings.state";
 
 @NgModule({
@@ -17,7 +18,7 @@ import { SettingsState } from "@store/settings/settings.state";
         LayoutModule,
         ToasterModule,
         HttpClientModule,
-        NgxsModule.forRoot([HomeState, SettingsState], {
+        NgxsModule.forRoot([HomeState, SettingsState, MoviesState], {
             developmentMode: !environment.production
         }),
         NgxsStoragePluginModule.forRoot({

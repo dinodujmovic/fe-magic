@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
-import { ToasterService, ToastMessageType } from "@core/shell/toaster/toaster.service";
 import { LoggerService } from "@core/services/logger.service";
+import { ToasterService, ToastMessageType } from "@core/shell/toaster/toaster.service";
 
 class Toast {
     enabled = false;

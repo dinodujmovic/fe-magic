@@ -1,7 +1,4 @@
-export interface SettingsPayload {
-    apiKey: string
-    theme: string;
-}
+import { SettingsPayload } from "@store/settings/settings.model";
 
 export class UpdateSettings {
     static type = "[Settings] Update settings";

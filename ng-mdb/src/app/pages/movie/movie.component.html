@@ -8,13 +8,13 @@
             </h2>
             <div class="mb-10 mt-2">
                 <span class="mr-1">{{ movie.release_date | date:'dd MMMM yyyy' }} (US)</span>
-                *
+                &#176;
                 <span class="ml-1 mr-1">
                     <span *ngFor="let g of movie.genres; index as i">
                         {{ g.name }}<span *ngIf="i !== movie.genres.length -1">,</span>
                     </span>
                 </span>
-                *
+                &#176;
                 <span class="ml-1 mr-1">
                     {{ movie.runtime | runtime }}
                 </span>

@@ -1,12 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Action, State, StateContext } from "@ngxs/store";
 import { UpdateSettings } from "@store/settings/settings.action";
-
-export interface ISettingsState {
-    themes: string[];
-    theme: string;
-    apiKey: string;
-}
+import { ISettingsState } from "@store/settings/settings.model";
 
 @State<ISettingsState>({
     name: "settings",

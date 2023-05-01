@@ -1,10 +1,6 @@
-import { IMovieResponse } from "@core/models";
+import { IMoviesDataState } from "@store/movies/movies.model";
 
-export interface IMoviesDataState {
-    data: IMovieResponse[];
-    loading: boolean;
-    error: any;
-    page: number,
-    totalPages: number,
-    totalResults: number
+export interface IHomeState {
+    trendingMovies: IMoviesDataState;
+    nowPlayingMovies: IMoviesDataState;
 }

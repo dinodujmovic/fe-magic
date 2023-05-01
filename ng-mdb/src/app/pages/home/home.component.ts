@@ -1,10 +1,10 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { IMovieResponse } from "@core/models";
 import { TTime } from "@core/models/types/TTime";
 import { HomeFacade } from "@pages/home/home.facade";
-import { IMoviesDataState } from "@store/home/home.model";
+import { IMoviesDataState } from "@store/movies/movies.model";
 import { Observable } from "rxjs";
-import {IMovieResponse} from "@core/models";
 
 @Component({
     templateUrl: "./home.component.html",

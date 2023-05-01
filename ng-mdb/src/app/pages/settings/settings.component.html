@@ -4,7 +4,7 @@
     <div class="alert alert-info shadow-lg">
         <span>
             Get your Movie Database API key
-            <a href="https://www.themoviedb.org/settings/api" target="_blank">HERE</a>
+            <a class="font-bold" href="https://www.themoviedb.org/settings/api" target="_blank">[HERE]</a>
         </span>
     </div>
 
@@ -13,7 +13,15 @@
             <label class="label">
                 <span class="label-text">API key</span>
             </label>
-            <input formControlName="apiKey" type="text" placeholder="Type here" class="mdb-settings__api-key-input input w-full max-w-xs"/>
+            <div class="input-group relative">
+                <input formControlName="apiKey"
+                       class="mdb-settings__api-key-input input w-full max-w-xs"
+                       [type]="showApiKey ? 'text': 'password'"
+                       placeholder="Type here"/>
+                <button (click)="showApiKey = !showApiKey" class="btn btn-square">
+                    {{ showApiKey ? 'Hide' : 'Show' }}
+                </button>
+            </div>
         </div>
 
         <div class="mt-10">

@@ -3,7 +3,8 @@ import { IErrorResponse, IMovieResponse, IPaginationResponse } from "@core/model
 import { MovieService } from "@core/services/movie.service";
 import { Action, State, StateContext } from "@ngxs/store";
 import { GetNowPlayingMovies, GetTrendingMovies } from "@store/home/home.action";
-import { IMoviesDataState } from "@store/home/home.model";
+import { IHomeState } from "@store/home/home.model";
+import { IMoviesDataState } from "@store/movies/movies.model";
 import { catchError, tap, throwError } from "rxjs";
 
 const initMoviesDataState = (): IMoviesDataState => ({
@@ -14,11 +15,6 @@ const initMoviesDataState = (): IMoviesDataState => ({
     totalPages: 0,
     totalResults: 0
 });
-
-export interface IHomeState {
-    trendingMovies: IMoviesDataState;
-    nowPlayingMovies: IMoviesDataState;
-}
 
 @State<IHomeState>({
     name: "home",

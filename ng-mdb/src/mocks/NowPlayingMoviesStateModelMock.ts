@@ -14,6 +14,7 @@ const MOVIES = [
         release_date: "20 Jan 2023",
         overview: "John Wick 2 movie",
         poster_path: "/path",
+        backdrop_path: "/backdrop_path",
         vote_average: 5.5,
     },
     {
@@ -23,6 +24,7 @@ const MOVIES = [
         release_date: "20 Jan 2016",
         overview: "Lord of the rings",
         poster_path: "/path",
+        backdrop_path: "/backdrop_path",
         vote_average: 5.5,
     },
     {
@@ -32,6 +34,7 @@ const MOVIES = [
         release_date: "20 Jan 2002",
         overview: "Harry Potter movie",
         poster_path: "/path",
+        backdrop_path: "/backdrop_path",
         vote_average: 5.5,
     }
 ];

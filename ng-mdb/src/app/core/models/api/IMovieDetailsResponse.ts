@@ -1,4 +1,4 @@
-export interface IMoveDetailsResponse {
+export interface IMovieDetailsResponse {
     id: number;
     backdrop_path: string;
     budget: number;

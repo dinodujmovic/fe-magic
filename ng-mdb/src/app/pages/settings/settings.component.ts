@@ -9,6 +9,7 @@ import { SettingsFacade } from "./settings.facade";
 export class SettingsComponent {
     form: FormGroup;
     themes: string[];
+    showApiKey = false;
 
     constructor(private fb: FormBuilder, private settingsFacade: SettingsFacade) {
         const settings = this.settingsFacade.getSettings();

@@ -5,8 +5,8 @@ import { NOW_PLAYING_MOVIES_STATE_MODEL_MOCK } from "@mocks/NowPlayingMoviesStat
 import { TRENDING_MOVIES_STATE_MODEL_MOCK } from "@mocks/TrendingMoviesStateModelMock";
 import { CarouselItemComponent } from "@pages/home/components/carousel-item/carousel-item.component";
 import { CarouselSectionComponent } from "@pages/home/components/carousel-section/carousel-section.component";
-import { MovieCardComponent } from "@shared/components/movie-card/movie-card.component";
 import { HomeFacade } from "@pages/home/home.facade";
+import { MovieCardComponent } from "@shared/components/movie-card/movie-card.component";
 import { SharedModule } from "@shared/shared.module";
 import { of } from "rxjs";
 
@@ -62,12 +62,12 @@ describe("HomeComponent", () => {
         expect(mockMoviesFacade.getTrendingMovies$).toHaveBeenCalledTimes(1);
         expect(mockMoviesFacade.getNowPlayingMovies$).toHaveBeenCalledTimes(1);
 
-        const trendingMoviesEl = fixture.debugElement.queryAll(By.css(".mdb-trending-home .mdb-movie-card"));
+        const trendingMoviesEl = fixture.debugElement.queryAll(By.css(".mdb-trending-movies .mdb-movie-card"));
         expect(trendingMoviesEl.length).toEqual(2);
         expect(trendingMoviesEl[0].query(By.css(".mdb-movie-card__title")).nativeElement.textContent).toEqual("Avatar");
         expect(trendingMoviesEl[1].query(By.css(".mdb-movie-card__title")).nativeElement.textContent).toEqual("John Wick 4");
 
-        const playingMovies = fixture.debugElement.queryAll(By.css(".mdb-playing-home .mdb-movie-card"));
+        const playingMovies = fixture.debugElement.queryAll(By.css(".mdb-playing-movies .mdb-movie-card"));
         expect(playingMovies.length).toEqual(3);
         expect(playingMovies[0].query(By.css(".mdb-movie-card__title")).nativeElement.textContent).toEqual("John Wick 2");
         expect(playingMovies[1].query(By.css(".mdb-movie-card__title")).nativeElement.textContent).toEqual("Lord of the rings");
